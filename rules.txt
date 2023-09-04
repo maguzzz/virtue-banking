@@ -1,0 +1,4 @@
+Rules
+
+var/class/ids  = camelCase
+functions = PascalCase

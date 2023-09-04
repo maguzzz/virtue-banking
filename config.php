@@ -1,3 +1,3 @@
 <?php
 session_start();
-$connect = mysqli_connect("localhost", "root", "", "reglog");
+$connect = mysqli_connect("localhost", "root", "", "virtue");

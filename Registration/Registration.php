@@ -15,9 +15,9 @@ if (isset($_POST["submit"])) {
         if ($password == $confirmpassword) {
             $query = "INSERT INTO user VALUES('','$name','$email','$password','$pin','$cardNumber')";
             mysqli_query($connect, $query);
-            echo "<script> alert(Registration Complete'); </script>";
+            echo "<script> alert('Registration Complete'); </script>";
         } else {
-            echo "<script> altert('Passwords not identical'); </script>";
+            echo "<script> alert('Passwords not identical'); </script>";
         }
     }
 
@@ -49,7 +49,7 @@ if (isset($_POST["submit"])) {
                 <input class="inputBoxes" type="text" name="password" id="password" required value=""
                     placeholder=" Password"> <br>
                 <input class="inputBoxes" type="text" name="confirmpassword" id="confirmpassword" required value=""
-                    placeholder=" Confirm Passowrd"> <br>
+placeholder=" Confirm Passowrd"> <br>
                 <input class="inputBoxes" type="text" name="pin" id="pin" required value="" placeholder=" PIN"> <br>
                 <input class="inputBoxes" type="text" name="cardNumber" id="cardNumber" required value=""
                     placeholder=" Card Number"> <br>

@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: 100%;
+}
+
+.loginPage h1{
+    position: relative;
+    padding-top: 50%;
+    text-align: center;
+}
+
+.loginPage h2 {
+    
+}
+
+

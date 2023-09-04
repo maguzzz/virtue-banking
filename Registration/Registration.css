@@ -4,18 +4,45 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.container {
-    width: 100%;
-}
 
-.loginPage h1{
-    position: relative;
-    padding-top: 50%;
+.container {
+    margin-top: 10%;
+    width: 100%;
     text-align: center;
 }
 
-.loginPage h2 {
-    
+.regiPage h1{
+    position: relative;
+    font-size: 5em;
+}
+
+.regiPage h2 {
+    position: relative;
+    font-size: 2em;
+}
+
+.formContainer {
+    position: relative;
+    margin-top: 2em;
+}
+
+.inputBoxes {
+    border-color: #6A66A3;
+    border-radius: 15px 15px 15px 15px;
+    width: 20em;
+    height: 3.5em;
+    margin-top: 1%;
+}
+
+.submitButton {
+    background-color: #6A66A3;
+    color: white;
+    border: none;
+    border-radius:  25px 25px 25px 25px;
+    font-size: 0.5em;
+    margin-top: 1%;
+    width: 7em;
+    height: 2.5em;
 }
 
 

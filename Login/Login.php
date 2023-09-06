@@ -35,23 +35,24 @@ if (isset($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="Login.css">
+    <link rel="stylesheet" href="Login.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
 
     <div class="container">
-
         <section class="regiPage">
             <h1>Welcome back!</h1>
             <h2>Good to see you!</h2>
 
             <form class="formContainer" action="" method="post" autocomplete="off">
-                <input class="inputBoxes" type="text" name="email" id="email" required value=""placeholder=" Email"><br>
-                <input class="inputBoxes" type="text" name="password" id="password" required value="" placeholder=" Password"> <br>
-                <button class="submitButton" type="submit" name="submit">Login</button> <br>
-                <a>Don't have an account? </a>
-                <a href="https://localhost//virtue-banking/Registration/Registration.php">Create one</a>
+                <br> <br>
+                <input class="inputBoxes" type="text" name="email" id="email" required value="" placeholder="Email"><br>
+                <input class="inputBoxes" type="text" name="password" id="password" required value="" placeholder="Password"> <br>
+                <br> <br> <br>
+                <button class="submitButton" type="submit" name="submit">Register</button> <br> <br>
+                <a class="textAlreadyAccount">Don't have an account? </a>
+                <a class="alreadyAccount" href="/virtue-banking/Registration/Registration.php">Create one</a>
             </form>
         </section>
     </div>

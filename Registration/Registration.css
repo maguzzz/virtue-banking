@@ -23,30 +23,7 @@
 }
 
 
-
-.navbar {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    top: 4%;
-    word-spacing: 120px;
-}
-
-.navbar a{
-    color: black;
-    font-size: 1.4em;
-    text-decoration: none;
-}
-
-#logo {
-    position: absolute;
-    left: 1%;
-    margin-top: -0.3%;
-    text-align: end;
-    font-size: 1.8em;
-    font-family: Kollektif-Bold;
-    color: #575757 !important;
-}
+/* Headers text */
 
 .container {
     margin-top: 10%;
@@ -65,6 +42,8 @@
     font-size: 50px;
     font-weight: normal;
 }
+
+/* Input boxes and Button styles */
 
 input::placeholder {
     opacity: 100%;

@@ -57,9 +57,7 @@ if (isset($_POST["submit"])) {
 <body>
 
     <div class="navbar">
-        <div id="logo">
-            <a id="logo" href="#virtue">virtue</a>
-        </div>
+        <a id="logo" href="#virtue">virtue</a>
         <a href="#about">About</a>
         <a href="#pricing">Pricing</a>
         <a href="#buisness">Buisness</a>
@@ -79,7 +77,7 @@ if (isset($_POST["submit"])) {
                 <br> <br> <br>
                 <button class="submitButton" type="submit" name="submit">Register</button> <br> <br>
                 <a class="textAlreadyAccount">Already have an account? </a>
-                <a class="alreadyAccount" href="/Login/Login.php">Log in</a>
+                <a class="alreadyAccount" href="/virtue-banking/Login/Login.php">Log in</a>
             </form>
         </section>
     </div>

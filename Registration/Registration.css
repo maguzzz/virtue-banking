@@ -41,8 +41,10 @@
 #logo {
     position: absolute;
     left: 1%;
-    top: 0%;
-    font-size: 1.3em;
+    margin-top: -0.3%;
+    text-align: end;
+    font-size: 1.8em;
+    font-family: Kollektif-Bold;
     color: #575757 !important;
 }
 

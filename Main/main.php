@@ -22,6 +22,8 @@ else{
 </head>
 <body>
     <h1>Hello <?php echo $row["name"]?> <h1>
+    <h1>CardNumber |<?php echo $row["cardNumber"]?> <h1>
+    <h1>Pin | <?php echo $row["pin"]?> <h1>
     <a href="../Logout/Logout.php">Logout</a>
 </body>
 </html>

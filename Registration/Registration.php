@@ -1,7 +1,23 @@
 <?php
 require '../config.php';
 
-if(!empty($_SESSION["id"])){
+
+function cardNumGen($x)
+{
+    while (true) {
+        $cardGen = mt_rand(1000000000000000, 9999999999999999);
+        $diplicateCheck = mysqli_query($x, "SELECT * FROM user WHERE cardNumber = '$cardGen'");
+        if (mysqli_num_rows($diplicateCheck) > 0) {
+            continue;
+        }else{
+            echo "<script>alert('$cardGen');</script>";
+            return $cardGen;
+        }
+    }
+}
+
+
+if (!empty($_SESSION["id"])) {
     header("Location: ../Main/main.php");
 }
 
@@ -10,8 +26,8 @@ if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $confirmpassword = $_POST["confirmpassword"];
-    $pin = $_POST["pin"];
-    $cardNumber = $_POST["cardNumber"];
+    $pin = mt_rand(1000, 9999);
+    $cardNumber = cardNumGen($connect);
     $duplicate = mysqli_query($connect, "SELECT * FROM user WHERE email = '$email'");
     if (mysqli_num_rows($duplicate) > 0) {
         echo "<script>alert('Email has Already been registered');</script>";

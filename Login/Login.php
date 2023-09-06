@@ -51,7 +51,7 @@ if (isset($_POST["submit"])) {
                 <input class="inputBoxes" type="text" name="password" id="password" required value="" placeholder=" Password"> <br>
                 <button class="submitButton" type="submit" name="submit">Login</button> <br>
                 <a>Don't have an account? </a>
-                <a href="#createAccount">Create one</a>
+                <a href="https://localhost//virtue-banking/Registration/Registration.php">Create one</a>
             </form>
         </section>
     </div>

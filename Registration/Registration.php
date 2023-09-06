@@ -27,6 +27,7 @@ if (isset($_POST["submit"])) {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,49 +35,38 @@ if (isset($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
-    <link rel="stylesheet" href="Registration.css">
+    <link rel="stylesheet" href="Registration.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="navbar">
+        <div id="logo">
+            <a id="logo" href="#virtue">virtue</a>
+        </div>
+        <a href="#about">About</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#buisness">Buisness</a>
+    </div>
 
+    <div class="container">
         <section class="regiPage">
             <h1>Welcome!</h1>
             <h2>Good to see you!</h2>
 
             <form class="formContainer" action="" method="post" autocomplete="off">
-                <input class="inputBoxes" type="text" name="name" id="name" required value="" placeholder=" Name"> <br>
-                <input class="inputBoxes" type="text" name="email" id="email" required value="" placeholder=" Email">
-                <br>
-                <input class="inputBoxes" type="text" name="password" id="password" required value=""
-                    placeholder=" Password"> <br>
-                <input class="inputBoxes" type="text" name="confirmpassword" id="confirmpassword" required value=""
-placeholder=" Confirm Passowrd"> <br>
-                <input class="inputBoxes" type="text" name="pin" id="pin" required value="" placeholder=" PIN"> <br>
-                <input class="inputBoxes" type="text" name="cardNumber" id="cardNumber" required value=""
-                    placeholder=" Card Number"> <br>
-                <button class="submitButton" type="submit" name="submit">Register</button>
+                <br> <br>
+                <input class="inputBoxes" type="text" name="name" id="name" required value="" placeholder="Name"> <br>                
+                <input class="inputBoxes" type="text" name="email" id="email" required value="" placeholder="Email"><br>
+                <input class="inputBoxes" type="text" name="password" id="password" required value="" placeholder="Password"> <br>
+                <input class="inputBoxes" type="text" name="confirmpassword" id="confirmpassword" required value="" placeholder="Confirm Passoword"> <br>
+                <br> <br> <br>
+                <button class="submitButton" type="submit" name="submit">Register</button> <br> <br>
+                <a class="textAlreadyAccount">Already have an account? </a>
+                <a class="alreadyAccount" href="/Login/Login.php">Log in</a>
             </form>
         </section>
-
-
-
-
-
-
-
-
     </div>
-
-
-
-
-
-
-
-
-
 </body>
 
 </html>

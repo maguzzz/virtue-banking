@@ -22,33 +22,69 @@
     font-family: Kollektif;
 }
 
+
+
+.navbar {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 4%;
+    word-spacing: 120px;
+}
+
+.navbar a{
+    color: black;
+    font-size: 1.4em;
+    text-decoration: none;
+}
+
+#logo {
+    position: absolute;
+    left: 1%;
+    top: 0%;
+    font-size: 1.3em;
+    color: #575757 !important;
+}
+
 .container {
     margin-top: 10%;
     width: 100%;
     text-align: center;
 }
-
 .regiPage h1{
     position: relative;
-    font-size: 5em;
+    font-size: 75px;
+    font-family: Kollektif-Bold;
+    font-weight: normal;
 }
 
 .regiPage h2 {
     position: relative;
-    font-size: 2em;
+    font-size: 50px;
+    font-weight: normal;
+}
+
+input::placeholder {
+    opacity: 100%;
+    color: #6F6F71;
 }
 
 .formContainer {
     position: relative;
-    margin-top: 2em;
+    margin-top: 1em;
 }
 
 .inputBoxes {
     border-color: #6A66A3;
     border-radius: 15px 15px 15px 15px;
-    width: 20em;
-    height: 3.5em;
-    margin-top: 1%;
+    border-width: 1px;
+    color: black;
+    width: 18em;
+    height: 2.9em;
+    margin-top: 0.7%;
+    font-size: 1.2em;
+    padding-left: 20px;
+    outline: none;
 }
 
 .submitButton {
@@ -56,8 +92,19 @@
     color: white;
     border: none;
     border-radius:  25px 25px 25px 25px;
-    font-size: 0.5em;
+    font-size: 1.5em;
     margin-top: 1%;
-    width: 7em;
-    height: 2.5em;
+    width: 8em;
+    height: 2em;
+}
+
+.alreadyAccount {
+    font-size: 1.5em;
+    text-decoration: none;
+    color: #6A66A3;
+}
+
+.textAlreadyAccount {
+    font-size: 1.5em;
+    color: #6F6F71;
 }

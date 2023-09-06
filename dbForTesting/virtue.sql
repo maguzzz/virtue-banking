@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 04. Sep 2023 um 15:56
+-- Erstellungszeit: 06. Sep 2023 um 12:01
 -- Server-Version: 10.4.28-MariaDB
 -- PHP-Version: 8.0.28
 
@@ -33,15 +33,8 @@ CREATE TABLE `user` (
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `pin` int(6) NOT NULL,
-  `cardNumber` int(16) NOT NULL
+  `cardNumber` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Daten für Tabelle `user`
---
-
-INSERT INTO `user` (`id`, `name`, `email`, `password`, `pin`, `cardNumber`) VALUES
-(1, 'Mark Mueller', 'mark.mueller@gmail.com', '123456', 123456, 2147483647);
 
 --
 -- Indizes der exportierten Tabellen
@@ -61,7 +54,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

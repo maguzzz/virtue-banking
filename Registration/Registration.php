@@ -1,6 +1,10 @@
 <?php
 require '../config.php';
 
+if(!empty($_SESSION["id"])){
+    header("Location: ../Main/main.php");
+}
+
 if (isset($_POST["submit"])) {
     $name = $_POST["name"];
     $email = $_POST["email"];
@@ -13,8 +17,7 @@ if (isset($_POST["submit"])) {
         echo "<script>alert('Email has Already been registered');</script>";
     } else {
         if ($password == $confirmpassword) {
-            $query = "INSERT INTO user VALUES('','$name','$email','$password','$pin','$cardNumber')";
-            mysqli_query($connect, $query);
+            mysqli_query($connect, "INSERT INTO user VALUES('','$name','$email','$password','$pin','$cardNumber')");
             echo "<script> alert('Registration Complete'); </script>";
         } else {
             echo "<script> alert('Passwords not identical'); </script>";

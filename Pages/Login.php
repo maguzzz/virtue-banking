@@ -1,8 +1,8 @@
 <?php
-require '../config.php';
+require 'config.php';
 
 if(!empty($_SESSION["id"])){
-    header("Location: ../Main/main.php");
+    header("Location: ../Pages/main.php");
 }
 
 if (isset($_POST["submit"])) {
@@ -14,7 +14,7 @@ if (isset($_POST["submit"])) {
         if ($password == $row["password"]) {
             $_SESSION["login"] = true;
             $_SESSION["id"] = $row["id"];
-            header("Location: ../Main/main.php");
+            header("Location: ../Pages/main.php");
 
         } else {
             echo "<script>alert('Wrong Password');</script>";
@@ -35,7 +35,7 @@ if (isset($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="Login.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../Styles/RegiAndLogin.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
@@ -52,7 +52,7 @@ if (isset($_POST["submit"])) {
                 <br> <br> <br>
                 <button class="submitButton" type="submit" name="submit">Register</button> <br> <br>
                 <a class="textAlreadyAccount">Don't have an account? </a>
-                <a class="alreadyAccount" href="/virtue-banking/Registration/Registration.php">Create one</a>
+                <a class="alreadyAccount" href="/virtue-banking/Pages/Registration.php">Create one</a>
             </form>
         </section>
     </div>

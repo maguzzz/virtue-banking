@@ -1,5 +1,5 @@
 <?php
-require '../config.php';
+require 'config.php';
 
 
 function cardNumGen($x)
@@ -18,7 +18,7 @@ function cardNumGen($x)
 
 
 if (!empty($_SESSION["id"])) {
-    header("Location: ../Main/main.php");
+    header("Location: main.php");
 }
 
 if (isset($_POST["submit"])) {
@@ -51,7 +51,7 @@ if (isset($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
-    <link rel="stylesheet" href="Registration.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../Styles/RegiAndLogin.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
@@ -69,7 +69,7 @@ if (isset($_POST["submit"])) {
                 <br> <br> <br>
                 <button class="submitButton" type="submit" name="submit">Register</button> <br> <br>
                 <a class="textAlreadyAccount">Already have an account? </a>
-                <a class="alreadyAccount" href="/virtue-banking/Login/Login.php">Log in</a>
+                <a class="alreadyAccount" href="/virtue-banking/Pages/Login.php">Log in</a>
             </form>
         </section>
     </div>

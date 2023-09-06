@@ -7,32 +7,32 @@
     font-family: Kollektif-BoldItalic;
     src: url(../font/Kollektif-BoldItalic.ttf);
 }
+
 @font-face {
     font-family: Kollektif-Italic;
     src: url(../font/Kollektif-Italic.ttf);
 }
+
 @font-face {
     font-family: Kollektif;
     src: url(../font/Kollektif.ttf);
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: Kollektif;
 }
-
-
-/* Headers text */
 
 .container {
     margin-top: 10%;
     width: 100%;
     text-align: center;
 }
-.regiPage h1{
+
+.regiPage h1 {
     position: relative;
-    font-size: 75px;
+    font-size: 4.7em;
     font-family: Kollektif-Bold;
     font-weight: normal;
 }
@@ -42,8 +42,6 @@
     font-size: 50px;
     font-weight: normal;
 }
-
-/* Input boxes and Button styles */
 
 input::placeholder {
     opacity: 100%;
@@ -72,7 +70,7 @@ input::placeholder {
     background-color: #6A66A3;
     color: white;
     border: none;
-    border-radius:  25px 25px 25px 25px;
+    border-radius: 25px 25px 25px 25px;
     font-size: 1.5em;
     margin-top: 1%;
     width: 8em;
@@ -88,4 +86,51 @@ input::placeholder {
 .textAlreadyAccount {
     font-size: 1.5em;
     color: #6F6F71;
+}
+
+
+@media screen and (max-width: 600px) {
+    .regiPage h1 {
+        font-size: 2.5em;
+        margin-top: 20vh;
+    }
+
+    .formContainer {
+        position: relative;
+        margin-top: 20vw;
+    }
+
+    .regiPage h2 {
+        font-size: 2em;
+    }
+
+    .inputBoxes {
+        width: 10em;
+        height: 2em;
+        margin-top: 3%;
+        font-size: 1.2em;
+    }
+
+    .submitButton {
+        font-size: 1.2em;
+    }
+
+    .alreadyAccount {
+        font-size: 1.2em;
+        text-decoration: none;
+        color: #6A66A3;
+    }
+
+    .textAlreadyAccount {
+        font-size: 1.2em;
+        color: #6F6F71;
+    }
+
+    #logo {
+        position: absolute;
+        left: 5%;
+        top: -1%;
+        font-size: 1.3em;
+        color: #575757 !important;
+    }
 }

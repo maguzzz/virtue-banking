@@ -56,7 +56,6 @@ if (isset($_POST["submit"])) {
 
 <body>
 
-
     <div class="container">
         <section class="regiPage">
             <h1>Welcome!</h1>
@@ -71,7 +70,7 @@ if (isset($_POST["submit"])) {
                 <br> <br> <br>
                 <button class="submitButton" type="submit" name="submit">Register</button> <br> <br>
                 <a class="textAlreadyAccount">Already have an account? </a>
-                <a class="alreadyAccount" href="/Login/Login.php">Log in</a>
+                <a class="alreadyAccount" href="/virtue-banking/Login/Login.php">Log in</a>
             </form>
         </section>
     </div>

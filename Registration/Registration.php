@@ -56,14 +56,6 @@ if (isset($_POST["submit"])) {
 
 <body>
 
-    <div class="navbar">
-        <div id="logo">
-            <a id="logo" href="#virtue">virtue</a>
-        </div>
-        <a href="#about">About</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#buisness">Buisness</a>
-    </div>
 
     <div class="container">
         <section class="regiPage">

@@ -22,30 +22,6 @@
     font-family: Kollektif;
 }
 
-
-
-.navbar {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    top: 4%;
-    word-spacing: 120px;
-}
-
-.navbar a{
-    color: black;
-    font-size: 1.4em;
-    text-decoration: none;
-}
-
-#logo {
-    position: absolute;
-    left: 1%;
-    top: 0%;
-    font-size: 1.3em;
-    color: #575757 !important;
-}
-
 .container {
     margin-top: 10%;
     width: 100%;
@@ -53,7 +29,7 @@
 }
 .regiPage h1{
     position: relative;
-    font-size: 75px;
+    font-size: 4.7em;
     font-family: Kollektif-Bold;
     font-weight: normal;
 }
@@ -108,3 +84,50 @@ input::placeholder {
     font-size: 1.5em;
     color: #6F6F71;
 }
+
+
+@media screen and (max-width: 600px) {
+    .regiPage h1{
+        font-size: 2.5em;
+        margin-top: 20vh;
+    }
+
+    .formContainer {
+        position: relative;
+        margin-top: 20vw;
+    }
+
+    .regiPage h2{
+        font-size: 2em;
+    }
+
+    .inputBoxes {
+        width: 10em;
+        height: 2em;
+        margin-top: 3%;
+        font-size: 1.2em;
+    }
+
+    .submitButton {
+        font-size: 1.2em;
+    }
+
+    .alreadyAccount {
+        font-size: 1.2em;
+        text-decoration: none;
+        color: #6A66A3;
+    }
+    
+    .textAlreadyAccount {
+        font-size: 1.2em;
+        color: #6F6F71;
+    }
+
+    #logo {
+        position: absolute;
+        left: 5%;
+        top: -1%;
+        font-size: 1.3em;
+        color: #575757 !important;
+    }
+  }

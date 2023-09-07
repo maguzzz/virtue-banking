@@ -18,46 +18,41 @@ if (!empty($_SESSION["id"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>main</title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <title>Main</title>
     <link rel="stylesheet" href="../Styles/Main.css">
 
-    <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-    <script defer src="../Javascripts/Main.js"></script>
 </head>
 
 <body>
+
+    <a href="Logout.php">Logout</a>
+
+    <div class="accountNameContainer">
+        <a class="accountName">
+            <?php echo $row["name"] ?>
+        </a>
+    </div>
+
     <div class="container">
-    <table id="example" class="table table-striped" style="width:100%">
-        <thead>
+        <table class="tableContainer">
+            <div class="headColorer">
+                <tr>
+                    <th>Name</th>
+                    <th>Arrival</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Value</th>
+                </tr>
+            </div>
             <tr>
-                <th>Name</th>
-                <th>Arrival</th>
-                <th>Date</th>
-                <th>Status</th>
-                <th>Value</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
+                <td id="userName">Markus</td>
                 <td>sent</td>
                 <td>23/05/2023</td>
                 <td>pending</td>
                 <td>$320,800</td>
             </tr>
-
-
-            </tfoot>
-    </table>
+        </table>
     </div>
-    <a href="Logout.php">Logout</a>
-
-
 </body>
 
 </html>

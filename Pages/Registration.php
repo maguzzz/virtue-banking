@@ -18,7 +18,7 @@ function cardNumGen($x)
 
 
 if (!empty($_SESSION["id"])) {
-    header("Location: main.php");
+    header("Location: Main.php");
 }
 
 if (isset($_POST["submit"])) {
@@ -69,7 +69,7 @@ if (isset($_POST["submit"])) {
                 <br> <br> <br>
                 <button class="submitButton" type="submit" name="submit">Register</button> <br> <br>
                 <a class="textAlreadyAccount">Already have an account? </a>
-                <a class="alreadyAccount" href="/virtue-banking/Pages/Login.php">Log in</a>
+                <a class="alreadyAccount" href="Login.php">Log in</a>
             </form>
         </section>
     </div>

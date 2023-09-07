@@ -2,7 +2,7 @@
 require 'config.php';
 
 if(!empty($_SESSION["id"])){
-    header("Location: ../Pages/main.php");
+    header("Location: Main.php");
 }
 
 if (isset($_POST["submit"])) {
@@ -14,7 +14,7 @@ if (isset($_POST["submit"])) {
         if ($password == $row["password"]) {
             $_SESSION["login"] = true;
             $_SESSION["id"] = $row["id"];
-            header("Location: ../Pages/main.php");
+            header("Location: Main.php");
 
         } else {
             echo "<script>alert('Wrong Password');</script>";
@@ -52,7 +52,7 @@ if (isset($_POST["submit"])) {
                 <br> <br> <br>
                 <button class="submitButton" type="submit" name="submit">Login</button> <br> <br>
                 <a class="textAlreadyAccount">Don't have an account? </a>
-                <a class="alreadyAccount" href="/virtue-banking/Pages/Registration.php">Create one</a>
+                <a class="alreadyAccount" href="Registration.php">Create one</a>
             </form>
         </section>
     </div>

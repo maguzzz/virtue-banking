@@ -42,6 +42,9 @@ if (isset($_POST["submit"])) {
             echo "<script> alert('Passwords not identical'); </script>";
         }
     }
+
+    header("Location: login.php");
+    exit();
 }
 ?>
 

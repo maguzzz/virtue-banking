@@ -58,6 +58,7 @@
 }
 
 .tableContainer th {
+    position: relative;
     color: #6F6F71;
     font-size: 1.2em;
     padding: 8px;
@@ -71,7 +72,7 @@
 }
 
 .headColorer {
-    background: #6F6F71;
+
 }
 
 #userName {

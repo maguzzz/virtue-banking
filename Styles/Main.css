@@ -28,20 +28,28 @@
     position: relative;
     justify-content: center; 
     align-items: center;
+    overflow:hidden;
+    overflow-y: scroll;
+    height: 15em;
+    margin-top: 33%;
+    border-top: 2px solid #6F6F71;
+    width: 80%;
+    left: 11%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
 }
 
 .tableContainer {
     position: relative;
     width: 80%;
     left: 11%;
-    margin-top: 28%;
+    margin-top: 0%;
     text-align: center;
-    border-top: 2px solid #6F6F71;
     overflow: hidden;
-}
-
-.tableContainer tr:nth-child(n+8) {
-    display: none;
 }
 
 .tableContainer tr {
@@ -108,6 +116,6 @@
     position: absolute;
     font-size: 3em;
     left: 40%;
-    top: 190%;
+    top: 50%;
     opacity: 60%;
 }

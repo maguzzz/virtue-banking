@@ -53,7 +53,6 @@ if (!empty($_SESSION["id"])) {
                 </tr>
             </div>
             <tr>
-            <tr>
                 <?php
 
 
@@ -135,10 +134,6 @@ if (!empty($_SESSION["id"])) {
                 }
 
                 ?>
-            </tr>
-
-
-
             </tr>
         </table>
     </div>

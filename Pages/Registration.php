@@ -27,7 +27,7 @@ if (isset($_POST["submit"])) {
     $password = $_POST["password"];
     $confirmpassword = $_POST["confirmpassword"];
     $pin = mt_rand(1000, 9999);
-    $balance = 0;
+    $balance = 250;
     $cardNumber = cardNumGen($connect);
     $duplicate = mysqli_query($connect, "SELECT * FROM user WHERE email = '$email'");
     if (mysqli_num_rows($duplicate) > 0) {

@@ -19,7 +19,8 @@ if (!empty($_SESSION["id"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
-    <link rel="stylesheet" href="../Styles/Main.css">
+    <link rel="stylesheet" href="../Styles/Main.css?v=<?php echo time(); ?>">
+
 
 </head>
 
@@ -27,10 +28,8 @@ if (!empty($_SESSION["id"])) {
 
     <a href="Logout.php">Logout</a>
 
-    <div class="accountNameContainer">
-        <a class="accountName">
-            <?php echo $row["user_name"] ?>
-        </a>
+    <div class="infoContainer">
+        <a class="accountName"><?php echo $row["user_name"]. "<br>". $row["cardNumber"]?></a>
     </div>
 
     <form class="formContainer" action="" method="post" autocomplete="off">
@@ -94,10 +93,13 @@ if (!empty($_SESSION["id"])) {
                     }
 
                 } else {
-                    echo "No transactions found.";
+                    echo "<a class='noFoundMessage'>No transactions found.</a>";
                 }
                 ?>
             </tr>
+
+
+
             </tr>
         </table>
     </div>

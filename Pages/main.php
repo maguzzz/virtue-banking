@@ -33,6 +33,11 @@ if (!empty($_SESSION["id"])) {
         </a>
     </div>
 
+
+    <input type="text" placeholder="Cardnumber">
+    <input type="text"  placeholder="Amount">
+    <button  type="button" name="submit">Submit</button>
+
     <div class="container">
         <table class="tableContainer">
             <div class="headColorer">

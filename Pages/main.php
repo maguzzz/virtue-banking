@@ -33,10 +33,12 @@ if (!empty($_SESSION["id"])) {
         </a>
     </div>
 
+    <form class="formContainer" action="" method="post" autocomplete="off">
+        <input type="text" placeholder="Cardnumber">
+        <input type="text" placeholder="Amount">
+        <button type="button" name="submit">Submit</button>
+    </form>
 
-    <input type="text" placeholder="Cardnumber">
-    <input type="text"  placeholder="Amount">
-    <button  type="button" name="submit">Submit</button>
 
     <div class="container">
         <table class="tableContainer">
@@ -51,48 +53,51 @@ if (!empty($_SESSION["id"])) {
             </div>
             <tr>
             <tr>
-                    <?php
+                <?php
 
-                    $idTransaction = $_SESSION["id"];
-                    $searchResult = mysqli_query($connect, "SELECT * FROM transactions WHERE sender = '$idTransaction' OR receiver = '$idTransaction'");
+                $idTransaction = $_SESSION["id"];
+                $searchResult = mysqli_query($connect, "SELECT * FROM transactions WHERE sender = '$idTransaction' OR receiver = '$idTransaction'");
 
 
 
-                    if (mysqli_num_rows($searchResult) > 0) {
+                if (mysqli_num_rows($searchResult) > 0) {
 
-                        while ($row = mysqli_fetch_assoc($searchResult)) {
+                    while ($row = mysqli_fetch_assoc($searchResult)) {
 
-                            $otherPerson = mysqli_query($connect, "SELECT user_name FROM user WHERE id != '$id' AND id = $row[receiver]  AND id != '$id' OR id = $row[sender] AND id != '$id'");
-                            $otherPersonName = mysqli_fetch_assoc($otherPerson);
+                        $otherPerson = mysqli_query($connect, "SELECT user_name FROM user WHERE id != '$id' AND id = $row[receiver]  AND id != '$id' OR id = $row[sender] AND id != '$id'");
+                        $otherPersonName = mysqli_fetch_assoc($otherPerson);
 
-                            echo "<td id='userName'>" . $otherPersonName["user_name"] . "</td>";
+                        echo "<td id='userName'>" . $otherPersonName["user_name"] . "</td>";
 
-                            if ($id != $row["receiver"]) {
-                                echo "<td> sent </td>";
-                            } else {
-                                echo "<td> received </td>";
-                            };
-
-                            echo "<td>" . $row["datum"] . "</td>";
-                            if($row["value"] < 25){
-                                echo "<td> Complete </td>";
-                            }else{
-                                echo "<td> Pending </td>";
-                            };
-                            if ($id != $row["receiver"]) {
-                                echo "<td> -" . $row["value"] . "€</td>";
-                            } else {
-                                echo "<td> +" . $row["value"] . "€</td>";
-                            };
-                            
-                            echo "</tr>";
+                        if ($id != $row["receiver"]) {
+                            echo "<td> sent </td>";
+                        } else {
+                            echo "<td> received </td>";
                         }
+                        ;
 
-                    } else {
-                        echo "No transactions found.";
+                        echo "<td>" . $row["datum"] . "</td>";
+                        if ($row["value"] < 25) {
+                            echo "<td> Complete </td>";
+                        } else {
+                            echo "<td> Pending </td>";
+                        }
+                        ;
+                        if ($id != $row["receiver"]) {
+                            echo "<td> -" . $row["value"] . "€</td>";
+                        } else {
+                            echo "<td> +" . $row["value"] . "€</td>";
+                        }
+                        ;
+
+                        echo "</tr>";
                     }
-                    ?>
-                </tr>
+
+                } else {
+                    echo "No transactions found.";
+                }
+                ?>
+            </tr>
             </tr>
         </table>
     </div>

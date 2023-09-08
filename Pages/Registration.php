@@ -22,18 +22,19 @@ if (!empty($_SESSION["id"])) {
 }
 
 if (isset($_POST["submit"])) {
-    $name = $_POST["name"];
+    $user_name = $_POST["user_name"];
     $email = $_POST["email"];
     $password = $_POST["password"];
     $confirmpassword = $_POST["confirmpassword"];
     $pin = mt_rand(1000, 9999);
+    $balance = 0;
     $cardNumber = cardNumGen($connect);
     $duplicate = mysqli_query($connect, "SELECT * FROM user WHERE email = '$email'");
     if (mysqli_num_rows($duplicate) > 0) {
         echo "<script>alert('Email has Already been registered');</script>";
     } else {
         if ($password == $confirmpassword) {
-            mysqli_query($connect, "INSERT INTO user VALUES('','$name','$email','$password','$pin','$cardNumber')");
+            mysqli_query($connect, "INSERT INTO user VALUES('','$user_name','$email','$password','$pin','$cardNumber','$balance')");
             echo "<script> alert('Registration Complete'); </script>";
         } else {
             echo "<script> alert('Passwords not identical'); </script>";
@@ -62,7 +63,7 @@ if (isset($_POST["submit"])) {
 
             <form class="formContainer" action="" method="post" autocomplete="off">
                 <br> <br>
-                <input class="inputBoxes" type="text" name="name" id="name" required value="" placeholder="Name"> <br>                
+                <input class="inputBoxes" type="text" name="user_name" id="name" required value="" placeholder="Name"> <br>                
                 <input class="inputBoxes" type="text" name="email" id="email" required value="" placeholder="Email"><br>
                 <input class="inputBoxes" type="text" name="password" id="password" required value="" placeholder="Password"> <br>
                 <input class="inputBoxes" type="text" name="confirmpassword" id="confirmpassword" required value="" placeholder="Confirm Passoword"> <br>

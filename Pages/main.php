@@ -45,11 +45,49 @@ if (!empty($_SESSION["id"])) {
                 </tr>
             </div>
             <tr>
-                <td id="userName">Markus</td>
-                <td>sent</td>
-                <td>23/05/2023</td>
-                <td>pending</td>
-                <td>$320,800</td>
+            <tr>
+                    <?php
+
+                    $idTransaction = $_SESSION["id"];
+                    $searchResult = mysqli_query($connect, "SELECT * FROM transactions WHERE sender = '$idTransaction' OR receiver = '$idTransaction'");
+
+
+
+                    if (mysqli_num_rows($searchResult) > 0) {
+
+                        while ($row = mysqli_fetch_assoc($searchResult)) {
+
+                            $otherPerson = mysqli_query($connect, "SELECT user_name FROM user WHERE id != '$id' AND id = $row[receiver]  AND id != '$id' OR id = $row[sender] AND id != '$id'");
+                            $otherPersonName = mysqli_fetch_assoc($otherPerson);
+
+                            echo "<td id='userName'>" . $otherPersonName["user_name"] . "</td>";
+
+                            if ($id != $row["receiver"]) {
+                                echo "<td> sent </td>";
+                            } else {
+                                echo "<td> received </td>";
+                            };
+
+                            echo "<td>" . $row["datum"] . "</td>";
+                            if($row["value"] < 25){
+                                echo "<td> Complete </td>";
+                            }else{
+                                echo "<td> Pending </td>";
+                            };
+                            if ($id != $row["receiver"]) {
+                                echo "<td> -" . $row["value"] . "€</td>";
+                            } else {
+                                echo "<td> +" . $row["value"] . "€</td>";
+                            };
+                            
+                            echo "</tr>";
+                        }
+
+                    } else {
+                        echo "No transactions found.";
+                    }
+                    ?>
+                </tr>
             </tr>
         </table>
     </div>

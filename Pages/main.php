@@ -29,7 +29,7 @@ if (!empty($_SESSION["id"])) {
 
     <div class="accountNameContainer">
         <a class="accountName">
-            <?php echo $row["name"] ?>
+            <?php echo $row["user_name"] ?>
         </a>
     </div>
 

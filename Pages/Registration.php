@@ -2,6 +2,7 @@
 require 'config.php';
 
 
+//Fcuntion to generate Random Card number (no duplicates)
 function cardNumGen($x)
 {
     while (true) {
@@ -10,7 +11,6 @@ function cardNumGen($x)
         if (mysqli_num_rows($diplicateCheck) > 0) {
             continue;
         }else{
-            echo "<script>alert('$cardGen');</script>";
             return $cardGen;
         }
     }
@@ -31,16 +31,17 @@ if (isset($_POST["submit"])) {
     $cardNumber = cardNumGen($connect);
     $duplicate = mysqli_query($connect, "SELECT * FROM user WHERE email = '$email'");
     if (mysqli_num_rows($duplicate) > 0) {
+        //Email has been registerd Alert
         echo "<script>alert('Email has Already been registered');</script>";
     } else {
         if ($password == $confirmpassword) {
+            //Creating Account
             mysqli_query($connect, "INSERT INTO user VALUES('','$user_name','$email','$password','$pin','$cardNumber','$balance')");
-            echo "<script> alert('Registration Complete'); </script>";
         } else {
+            //Passwords not identical Alert
             echo "<script> alert('Passwords not identical'); </script>";
         }
     }
-
 }
 ?>
 

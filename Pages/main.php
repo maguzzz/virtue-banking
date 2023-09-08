@@ -30,7 +30,7 @@ if (!empty($_SESSION["id"])) {
 
     <div class="infoContainer">
         <a class="accountName">
-            <?php echo $row["user_name"] . "<br> <a class='moneyInfo'>500€</a>" ?>
+            <?php echo $row["user_name"] . "<br> <a class='moneyInfo'>" . $row['balance'] . "€</a>" ?>
         </a>
     </div>
 
@@ -62,13 +62,13 @@ if (!empty($_SESSION["id"])) {
                     $idTransaction = $_SESSION["id"];
                     $currentDateTime = date('Y-m-d');
 
-                    if (isset($_POST["submit"])) {
-                        $cardNumber = $_POST["cardNumber"];
-                        $balance = $_POST["balance"];
+                if (isset($_POST["submit"])) {
+                    $cardNumber = $_POST["cardNumber"];
+                    $value = $_POST["balance"];
 
-                        //preventing SQL injection
-                        $cardNumber = mysqli_real_escape_string($connect, $cardNumber);
-                        $balance = mysqli_real_escape_string($connect, $balance);
+                    //preventing SQL injection
+                    $cardNumber = mysqli_real_escape_string($connect, $cardNumber);
+                    $value = mysqli_real_escape_string($connect, $value);
 
                         // Getting the receivers card number
                         $result = mysqli_query($connect, "SELECT * FROM user WHERE cardNumber = '$cardNumber'");
@@ -79,8 +79,18 @@ if (!empty($_SESSION["id"])) {
                                 $receiveId = $row["id"];
                                 $status = "complete";
 
-                                //Insert the transaction into the database
-                                $query = "INSERT INTO transactions (sender, receiver, datum, tra_value, tra_status) VALUES ($idTransaction, $receiveId, '$currentDateTime', $balance, '$status')";
+                            $logedAccount = mysqli_query($connect, "SELECT * FROM user WHERE id = '$id'");
+                            $logedRow = mysqli_fetch_assoc($logedAccount);
+
+                            $accSenderBalance = $logedRow["balance"] - $value;
+                            $accReceiverBalance = $row["balance"] + $value;
+                            
+                            mysqli_query ($connect, "UPDATE user SET balance = $accSenderBalance WHERE id = $id ");
+                            mysqli_query ($connect, "UPDATE user SET balance = $accReceiverBalance WHERE id = $receiveId");
+
+
+                            //Insert the transaction into the database
+                            $query = "INSERT INTO transactions (sender, receiver, datum, tra_value, tra_status) VALUES ($idTransaction, $receiveId, '$currentDateTime', $value, '$status')";
 
                                 if (mysqli_query($connect, $query)) {
                                     echo "<h1>" . $row["user_name"] . "</h1>";

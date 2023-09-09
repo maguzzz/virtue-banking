@@ -36,14 +36,16 @@ if (isset($_POST["submit"])) {
     } else {
         if ($password == $confirmpassword) {
             //Creating Account
-            mysqli_query($connect, "INSERT INTO user VALUES('','$user_name','$email','$password','$pin','$cardNumber','$balance')");
+            mysqli_query($connect, "INSERT INTO user VALUES('','$user_name','$email','$password','$pin','$cardNumber','$balance')"); 
+            header("Location: login.php");
+            exit();
         } else {
             //Passwords not identical Alert
             echo "<script> alert('Passwords not identical'); </script>";
         }
     }
 
-    header("Location: login.php");
+    header("Location: registration.php");
     exit();
 }
 ?>

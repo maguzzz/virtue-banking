@@ -80,9 +80,11 @@ if (!empty($_SESSION["id"])) {
                             $status = "complete";
 
                             $logedAccount = mysqli_query($connect, "SELECT * FROM user WHERE id = '$id'");
-                            
                             $logedRow = mysqli_fetch_assoc($logedAccount);
 
+                            if($row["cardNumber"] != $logedRow["cardNumber"]){
+
+                            
                             $accSenderBalance = $logedRow["balance"] - $value;
                             $accReceiverBalance = $row["balance"] + $value;
 
@@ -96,8 +98,12 @@ if (!empty($_SESSION["id"])) {
                             if (mysqli_query($connect, $query)) {
                                 echo "<h1>" . $row["user_name"] . "</h1>";
                             }
+                        }else{
+
+                            //ERROR for not sending money to your self
+                        }
                         } else {
-                            echo "User not found!";
+                            //ERROR cardnumber not found (no user found)
                         }
                     }
 
@@ -146,15 +152,6 @@ if (!empty($_SESSION["id"])) {
 
                 ?>
             </tr>
-            <!--
-                <tr>
-                    <td>Name</td>
-                    <td>Arrival</td>
-                    <td>Date</td>
-                    <td>Status</td>
-                    <td>Value</td>
-                </tr>
-                -->
         </table>
     </div>
 

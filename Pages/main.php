@@ -35,8 +35,8 @@ if (!empty($_SESSION["id"])) {
     </div>
 
     <form class="formContainer" action="" method="post" autocomplete="on">
-        <input type="text" name="cardNumber" required value="" placeholder="cardNumber"><br>
-        <input type="text" name="balance" required value="" placeholder="balance"> <br>
+        <input type="number" name="cardNumber" required value="" placeholder="cardNumber"><br>
+        <input type="number" min="1" name="balance" required value="" placeholder="balance"> <br>
 
         <button type="submit" name="submit">Submit</button>
     </form>
@@ -45,22 +45,22 @@ if (!empty($_SESSION["id"])) {
 
     <div class="container">
         <table class="tableContainer">
-                <div class="headColorer">
-                    <tr>
-                        <th>Name</th>
-                        <th>Arrival</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Value</th>
-                    </tr>
-                </div>
+            <div class="headColorer">
                 <tr>
-                    <?php
+                    <th>Name</th>
+                    <th>Arrival</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Value</th>
+                </tr>
+            </div>
+            <tr>
+                <?php
 
 
 
-                    $idTransaction = $_SESSION["id"];
-                    $currentDateTime = date('Y-m-d');
+                $idTransaction = $_SESSION["id"];
+                $currentDateTime = date('Y-m-d');
 
                 if (isset($_POST["submit"])) {
                     $cardNumber = $_POST["cardNumber"];
@@ -70,82 +70,83 @@ if (!empty($_SESSION["id"])) {
                     $cardNumber = mysqli_real_escape_string($connect, $cardNumber);
                     $value = mysqli_real_escape_string($connect, $value);
 
-                        // Getting the receivers card number
-                        $result = mysqli_query($connect, "SELECT * FROM user WHERE cardNumber = '$cardNumber'");
+                    // Getting the receivers card number
+                    $result = mysqli_query($connect, "SELECT * FROM user WHERE cardNumber = '$cardNumber'");
 
-                        if ($result) {
-                            $row = mysqli_fetch_assoc($result);
-                            if ($row) {
-                                $receiveId = $row["id"];
-                                $status = "complete";
+                    if ($result) {
+                        $row = mysqli_fetch_assoc($result);
+                        if ($row) {
+                            $receiveId = $row["id"];
+                            $status = "complete";
 
                             $logedAccount = mysqli_query($connect, "SELECT * FROM user WHERE id = '$id'");
+                            
                             $logedRow = mysqli_fetch_assoc($logedAccount);
 
                             $accSenderBalance = $logedRow["balance"] - $value;
                             $accReceiverBalance = $row["balance"] + $value;
-                            
-                            mysqli_query ($connect, "UPDATE user SET balance = $accSenderBalance WHERE id = $id ");
-                            mysqli_query ($connect, "UPDATE user SET balance = $accReceiverBalance WHERE id = $receiveId");
+
+                            mysqli_query($connect, "UPDATE user SET balance = $accSenderBalance WHERE id = $id ");
+                            mysqli_query($connect, "UPDATE user SET balance = $accReceiverBalance WHERE id = $receiveId");
 
 
                             //Insert the transaction into the database
                             $query = "INSERT INTO transactions (sender, receiver, datum, tra_value, tra_status) VALUES ($idTransaction, $receiveId, '$currentDateTime', $value, '$status')";
 
-                                if (mysqli_query($connect, $query)) {
-                                    echo "<h1>" . $row["user_name"] . "</h1>";
-                                }
-                            } else {
-                                echo "User not found!";
+                            if (mysqli_query($connect, $query)) {
+                                echo "<h1>" . $row["user_name"] . "</h1>";
                             }
+                        } else {
+                            echo "User not found!";
                         }
-
-                        header("Location: main.php");
-                        exit();
                     }
 
-                    $searchResult = mysqli_query($connect, "SELECT * FROM transactions WHERE sender = '$idTransaction' OR receiver = '$idTransaction'");
+                    header("Location: main.php");
+                    exit();
+                }
 
-                    if (mysqli_num_rows($searchResult) > 0) {
+                $searchResult = mysqli_query($connect, "SELECT * FROM transactions WHERE sender = '$idTransaction' OR receiver = '$idTransaction'");
 
-                        while ($row = mysqli_fetch_assoc($searchResult)) {
+                if (mysqli_num_rows($searchResult) > 0) {
 
-                            $otherPerson = mysqli_query($connect, "SELECT user_name FROM user WHERE id != '$id' AND id = $row[receiver]  AND id != '$id' OR id = $row[sender] AND id != '$id'");
-                            $otherPersonName = mysqli_fetch_assoc($otherPerson);
+                    while ($row = mysqli_fetch_assoc($searchResult)) {
 
-                            echo "<td id='userName'>" . $otherPersonName["user_name"] . "</td>";
+                        $otherPerson = mysqli_query($connect, "SELECT user_name FROM user WHERE id != '$id' AND id = $row[receiver]  AND id != '$id' OR id = $row[sender] AND id != '$id'");
+                        $otherPersonName = mysqli_fetch_assoc($otherPerson);
 
-                            if ($id != $row["receiver"]) {
-                                echo "<td> sent </td>";
-                            } else {
-                                echo "<td> received </td>";
-                            }
-                            ;
+                        echo "<td id='userName'>" . $otherPersonName["user_name"] . "</td>";
 
-                            echo "<td>" . $row["datum"] . "</td>";
-                            if ($row["tra_value"] < 25) {
-                                echo "<td> Complete </td>";
-                            } else {
-                                echo "<td> Pending </td>";
-                            }
-                            ;
-                            if ($id != $row["receiver"]) {
-                                echo "<td> -" . $row["tra_value"] . "€</td>";
-                            } else {
-                                echo "<td> +" . $row["tra_value"] . "€</td>";
-                            }
-                            ;
-
-                            echo "</tr>";
+                        if ($id != $row["receiver"]) {
+                            echo "<td> sent </td>";
+                        } else {
+                            echo "<td> received </td>";
                         }
+                        ;
 
-                    } else {
-                        echo "<a class='noFoundMessage'>No transactions found.</a>";
+                        echo "<td>" . $row["datum"] . "</td>";
+                        if ($row["tra_value"] < 25) {
+                            echo "<td> Complete </td>";
+                        } else {
+                            echo "<td> Pending </td>";
+                        }
+                        ;
+                        if ($id != $row["receiver"]) {
+                            echo "<td> -" . $row["tra_value"] . "€</td>";
+                        } else {
+                            echo "<td> +" . $row["tra_value"] . "€</td>";
+                        }
+                        ;
+
+                        echo "</tr>";
                     }
 
-                    ?>
-                </tr>
-                <!--
+                } else {
+                    echo "<a class='noFoundMessage'>No transactions found.</a>";
+                }
+
+                ?>
+            </tr>
+            <!--
                 <tr>
                     <td>Name</td>
                     <td>Arrival</td>
@@ -153,12 +154,12 @@ if (!empty($_SESSION["id"])) {
                     <td>Status</td>
                     <td>Value</td>
                 </tr>
-                --> 
+                -->
         </table>
     </div>
 
 
-    <script src="../Javascripts/Main.js"></script> 
+    <script src="../Javascripts/Main.js"></script>
 </body>
 
 </html>

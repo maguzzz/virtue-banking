@@ -1,14 +1,26 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../Styles/Startpage.css?v=<?php echo time(); ?>">
+    <title>Virtue</title>
 </head>
+
 <body>
-    
+    <div id="infoCont">
+        <div class="text">
+            <h1>Virtual</h1>
+            <h1>Banking</h1><br>
+            <a>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor </a>
+        </div>
+        <div class="buttons">
+            <button class="submitButton btn1" type="submit" name="submit">Login</button>
+            <button class="submitButton btn2" type="submit" name="submit">Register</button>
+        </div>
+        </id>
+    </div>
 </body>
+
 </html>

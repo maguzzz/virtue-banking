@@ -31,8 +31,7 @@ if (isset($_POST["submit"])) {
     $cardNumber = cardNumGen($connect);
     $duplicate = mysqli_query($connect, "SELECT * FROM user WHERE email = '$email'");
     if (mysqli_num_rows($duplicate) > 0) {
-        //Email has been registerd Alert
-        echo "<script>alert('Email has Already been registered');</script>";
+        //ERROR Accoutn registerd
     } else {
         if ($password == $confirmpassword) {
             //Creating Account
@@ -40,8 +39,7 @@ if (isset($_POST["submit"])) {
             header("Location: login.php");
             exit();
         } else {
-            //Passwords not identical Alert
-            echo "<script> alert('Passwords not identical'); </script>";
+            //ERROR password not identical
         }
     }
 

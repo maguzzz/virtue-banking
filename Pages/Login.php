@@ -17,13 +17,11 @@ if (isset($_POST["submit"])) {
             header("Location: Main.php");
 
         } else {
-            //Wrong passwort Alert
-            echo "<script>alert('Wrong Password');</script>";
+            //ERROR wrong password
         }
 
     } else {
-        //Email has not been registered Alert
-        echo "<script>alert('Email not registered');</script>";
+       //ERROR email not registered
     }
 
 }

@@ -8,6 +8,11 @@ if(!empty($_SESSION["id"])){
 if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
+
+    //Making sure there us no SQL injection
+    $email = mysqli_real_escape_string($connect, $email);
+    $password = mysqli_real_escape_string($connect, $password);
+
     $result = mysqli_query($connect, "SELECT * FROM user WHERE email = '$email'");
     $row = mysqli_fetch_assoc($result);
     if (mysqli_num_rows($result) > 0) {

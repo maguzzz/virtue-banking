@@ -26,9 +26,18 @@ if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $confirmpassword = $_POST["confirmpassword"];
+
+    //Making sure there us no SQL injection
+    $user_name = mysqli_real_escape_string($connect, $user_name);
+    $email = mysqli_real_escape_string($connect, $email);
+    $password = mysqli_real_escape_string($connect, $password);
+    $confirmpassword = mysqli_real_escape_string($connect, $confirmpassword);
+
+
     $pin = mt_rand(1000, 9999);
     $balance = 250;
     $cardNumber = cardNumGen($connect);
+
     $duplicate = mysqli_query($connect, "SELECT * FROM user WHERE email = '$email'");
     if (mysqli_num_rows($duplicate) > 0) {
         //ERROR Accoutn registerd

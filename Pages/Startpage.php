@@ -16,8 +16,8 @@
             <a>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor </a>
         </div>
         <div class="buttons">
-            <button class="submitButton btn1" type="submit" name="submit">Login</button>
-            <button class="submitButton btn2" type="submit" name="submit">Register</button>
+            <button class="submitButton btn1" onclick="window.location.href= '/virtue-banking/Pages/Login.php';">Login</button>
+            <button class="submitButton btn2"  onclick="window.location.href= '/virtue-banking/Pages/Registration.php';">Register</button>
         </div>
         </id>
     </div>

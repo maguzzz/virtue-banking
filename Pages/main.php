@@ -26,139 +26,113 @@ if (!empty($_SESSION["id"])) {
 
 <body>
 
-    <a href="Logout.php">Logout</a>
 
-    <div class="infoContainer">
-        <a class="accountName">
-            <?php echo $row["user_name"] . "<br> <a class='moneyInfo'>" . $row['balance'] . "€</a>" ?>
-        </a>
+    <div class="wrapper">
+        <div class="container1">
+            <a class="logoutButton" href="Logout.php">Logout</a>
+            <div class="box1">
+                <div class="col1">
+                    <h1>
+                        <?php echo $row["user_name"] . "<br> <a class='moneyInfo'>" . $row['balance'] . "€</a>" ?>
+                    </h1>
+                </div>
+
+                <div class="col2">
+                    <div class="transactionBox">
+                        <h1>Transfer</h1>
+                        <form class="formContainer" action="" method="post" autocomplete="on">
+                            <div class="labelBox">
+                                <input class="firstInput" type="number" name="cardNumber" required value=""
+                                    placeholder="cardNumber"><br>
+                                <input class="blapinInput" type="number" min="1" name="balance" required value="" placeholder="balance">
+                                <input class="blapinInput" type="number" min="4" max="4" name="pin" required value="" placeholder="pin">
+
+                                <button type="submit" name="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <div class="container2">
+            <div class="box3">
+                <h1>Transactions</h1>
+            </div>
+        </div>
     </div>
 
-    <form class="formContainer" action="" method="post" autocomplete="on">
-        <input type="text" name="cardNumber" required value="" placeholder="cardNumber"><br>
-        <input type="text" name="balance" required value="" placeholder="balance"> <br>
-
-        <button type="submit" name="submit">Submit</button>
-    </form>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--
+    <a class="logoutButton" href="Logout.php">Logout</a>
     <div class="container">
-        <table class="tableContainer">
-                <div class="headColorer">
-                    <tr>
-                        <th>Name</th>
-                        <th>Arrival</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Value</th>
+        <div class="col1">
+            <h1 class="accountName">
+            <?php echo $row["user_name"] . "<br> <a class='moneyInfo'>" . $row['balance'] . "€</a>" ?>
+            </h1>
+        </div>
+    </div>-->
+    <!--<form class="formContainer" action="" method="post" autocomplete="on">
+    <input type="number" name="cardNumber" required value="" placeholder="cardNumber"><br>
+    <input type="number" min="1" name="balance" required value="" placeholder="balance"> <br>
+
+    <button type="submit" name="submit">Submit</button>
+</form>-->
+    <!--
+    <div class="tabelContainer">
+
+        <table>
+            <thead>
+                <h1>Transactions</h1>
+                    <tr class="headerBorder">
+                        <th><a>Name</a></th>
+                        <th><a>Arrival</a></th>
+                        <th><a>Date</a></th>
+                        <th><a>Status</a></th>
+                        <th><a>Money</a></th>
                     </tr>
-                </div>
-                <tr>
-                    <?php
-
-
-
-                    $idTransaction = $_SESSION["id"];
-                    $currentDateTime = date('Y-m-d');
-
-                if (isset($_POST["submit"])) {
-                    $cardNumber = $_POST["cardNumber"];
-                    $value = $_POST["balance"];
-
-                    //preventing SQL injection
-                    $cardNumber = mysqli_real_escape_string($connect, $cardNumber);
-                    $value = mysqli_real_escape_string($connect, $value);
-
-                        // Getting the receivers card number
-                        $result = mysqli_query($connect, "SELECT * FROM user WHERE cardNumber = '$cardNumber'");
-
-                        if ($result) {
-                            $row = mysqli_fetch_assoc($result);
-                            if ($row) {
-                                $receiveId = $row["id"];
-                                $status = "complete";
-
-                            $logedAccount = mysqli_query($connect, "SELECT * FROM user WHERE id = '$id'");
-                            $logedRow = mysqli_fetch_assoc($logedAccount);
-
-                            $accSenderBalance = $logedRow["balance"] - $value;
-                            $accReceiverBalance = $row["balance"] + $value;
-                            
-                            mysqli_query ($connect, "UPDATE user SET balance = $accSenderBalance WHERE id = $id ");
-                            mysqli_query ($connect, "UPDATE user SET balance = $accReceiverBalance WHERE id = $receiveId");
-
-
-                            //Insert the transaction into the database
-                            $query = "INSERT INTO transactions (sender, receiver, datum, tra_value, tra_status) VALUES ($idTransaction, $receiveId, '$currentDateTime', $value, '$status')";
-
-                                if (mysqli_query($connect, $query)) {
-                                    echo "<h1>" . $row["user_name"] . "</h1>";
-                                }
-                            } else {
-                                echo "User not found!";
-                            }
-                        }
-
-                        header("Location: main.php");
-                        exit();
-                    }
-
-                    $searchResult = mysqli_query($connect, "SELECT * FROM transactions WHERE sender = '$idTransaction' OR receiver = '$idTransaction'");
-
-                    if (mysqli_num_rows($searchResult) > 0) {
-
-                        while ($row = mysqli_fetch_assoc($searchResult)) {
-
-                            $otherPerson = mysqli_query($connect, "SELECT user_name FROM user WHERE id != '$id' AND id = $row[receiver]  AND id != '$id' OR id = $row[sender] AND id != '$id'");
-                            $otherPersonName = mysqli_fetch_assoc($otherPerson);
-
-                            echo "<td id='userName'>" . $otherPersonName["user_name"] . "</td>";
-
-                            if ($id != $row["receiver"]) {
-                                echo "<td> sent </td>";
-                            } else {
-                                echo "<td> received </td>";
-                            }
-                            ;
-
-                            echo "<td>" . $row["datum"] . "</td>";
-                            if ($row["tra_value"] < 25) {
-                                echo "<td> Complete </td>";
-                            } else {
-                                echo "<td> Pending </td>";
-                            }
-                            ;
-                            if ($id != $row["receiver"]) {
-                                echo "<td> -" . $row["tra_value"] . "€</td>";
-                            } else {
-                                echo "<td> +" . $row["tra_value"] . "€</td>";
-                            }
-                            ;
-
-                            echo "</tr>";
-                        }
-
-                    } else {
-                        echo "<a class='noFoundMessage'>No transactions found.</a>";
-                    }
-
-                    ?>
-                </tr>
-                <!--
-                <tr>
-                    <td>Name</td>
-                    <td>Arrival</td>
-                    <td>Date</td>
-                    <td>Status</td>
-                    <td>Value</td>
-                </tr>
-                --> 
+            </thead>
+            <tbody>
+            
+            </tbody>
         </table>
     </div>
+-->
 
-
-    <script src="../Javascripts/Main.js"></script> 
 </body>
 
 </html>

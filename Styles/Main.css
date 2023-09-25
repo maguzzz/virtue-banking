@@ -18,105 +18,183 @@
     src: url(../font/Kollektif.ttf);
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
-    font-family: Kollektif;
-}
-
-.container {
-    position: relative;
-    justify-content: center; 
-    align-items: center;
-    overflow:hidden;
-    overflow-y: scroll;
-    height: 15em;
-    margin-top: 33%;
-    border-top: 2px solid #6F6F71;
-    width: 80%;
-    left: 11%;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-.container::-webkit-scrollbar {
-    display: none;
-}
-
-.tableContainer {
-    position: relative;
-    width: 80%;
-    left: 11%;
-    margin-top: 0%;
-    text-align: center;
-    overflow: hidden;
-}
-
-.tableContainer tr {
-    margin-bottom: 10px;
-    font-size: 1em;
-}
-
-.tableContainer th {
-    position: relative;
-    color: #6F6F71;
-    font-size: 1.2em;
-    padding: 8px;
-    font-family: Kollektif;
-}
-
-.tableContainer td {
-    color: #6F6F71; 
-    padding-right: 0.5%;
-    padding-top: 1%; 
-}
-
-.headColorer {
+    box-sizing: border-box;
+    font-family: Kollektif-Bold;
 
 }
 
-#userName {
-    color: black;
+.wrapper {
+    width: 100%;
+    height: 100vh;
 }
 
-.accountName {
+.logoutButton {
     position: absolute;
-    font-size: 3.5em;
-    left: 15%;
+}
+
+
+.col1, .col2{
+    width: 50%;
+    height: 100%;
+}
+
+
+.container1 {
+    width: 100%;
+    height: 45%;
+    display: flex;
+    justify-content: center;
+}
+
+.box1 {
+    position: relative; 
+    top: 12%;
+    width: 80%;
+    background-color: white;
+    height: 80%;
+    padding: 1%;
+    display: flex;
+}
+
+.box1 h1 {
+    font-size: 2.5em;
 }
 
 .moneyInfo {
-    position: absolute;
-    font-size: 3em;
-    left: 15%;
-    margin-top: 2.5%;
-    color: #008000;
-    opacity: 66%;
+    color: green;
+    font-size: 1.3em;
 }
 
-.currentMoneyInfo {
-    position: absolute;
-    left: 15%;
-    margin-top: 5.5%;
+.transactionBox {
+    width: 80%;
+    height: 100%;
+    padding: 1%;
+    background-color: rgba(217, 217, 217, 0.4);    
+    box-shadow: -12px 16px 20px 0.5px rgba(0, 0, 0, 0.5);
+    border-radius: 20px 20px 20px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.transactionBox h1  {
     font-size: 1.8em;
 }
 
-.infoContainer {
-    position: relative;
+.labelBox {
     width: 100%;
-    margin-top: 9%;
+    height: 50%;
+    background-color: black;
+    justify-content: space-between;
 }
 
 .formContainer {
-    position: absolute;
+    position: relative;
     top: 20%;
-    left: 70%;
+    width: auto;
+    left: -15%;
 }
 
-.noFoundMessage {
-    position: absolute;
-    font-size: 3em;
-    left: 40%;
-    top: 50%;
-    opacity: 60%;
+
+.firstInput {
+    position: relative;
+    width: 80%;
+    height: 25%;
+    border-radius: 9px 9px 9px 9px;
+    border: none;
+    background-color: #D9D9D9;
+
+}
+
+.blapinInput {
+    width: 32%;
+    height: 25%;
+    padding-top: 1%;
+    border-radius: 9px 9px 9px 9px;
+    border: none;
+    background-color: #D9D9D9;
+    
+}
+
+.formContainer button {
+    background-color: #6A66A3;
+    color: white;
+    border: none;
+    border-radius: 9px 9px 9px 9px;
+    width: 20%;
+    height: 25%;
+}
+
+.container2 {
+    width: 100%;
+    height: 55%;
+    display: flex;
+    justify-content: center;
+}
+
+.box3 {
+    position: relative;
+    top: 15%;
+    background-color: white;
+    width: 90%;
+    height: 80%;
+    padding: 1%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

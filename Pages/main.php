@@ -42,11 +42,14 @@ if (!empty($_SESSION["id"])) {
                         <h1>Transfer</h1>
                         <form class="formContainer" action="" method="post" autocomplete="on">
                             <div class="labelBox">
+                                <a>Your cardnumber:
+                                    <?php echo $row["cardNumber"] ?>
+                                </a>
                                 <input class="firstInput" type="number" name="cardNumber" required value=""
-                                    placeholder="cardNumber"><br>
-                                <input class="blapinInput" type="number" min="1" name="balance" required value="" placeholder="balance">
-                                <input class="blapinInput" type="number" min="4" max="4" name="pin" required value="" placeholder="pin">
-
+                                    placeholder="Cardnumber"><br>
+                                <input class="blapinInput" type="number" min="1" name="balance" required value=""
+                                    placeholder="Balance">
+                                <input class="blapinInput" type="number" name="pin" required value="" placeholder="Pin">
                                 <button type="submit" name="submit">Submit</button>
                             </div>
                         </form>
@@ -59,8 +62,19 @@ if (!empty($_SESSION["id"])) {
 
         </div>
         <div class="container2">
-            <div class="box3">
+            <div class="box2">
                 <h1>Transactions</h1>
+                <div class="border">
+                    <table>
+                        <thead>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

@@ -23,6 +23,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Kollektif-Bold;
+    scroll-behavior: smooth;
 
 }
 
@@ -43,8 +44,9 @@
 
 
 .container1 {
+    background-color: red;
     width: 100%;
-    height: 45%;
+    height: 50%;
     display: flex;
     justify-content: center;
 }
@@ -60,7 +62,7 @@
 }
 
 .box1 h1 {
-    font-size: 2.5em;
+    font-size: 3.5em;
 }
 
 .moneyInfo {
@@ -70,77 +72,129 @@
 
 .transactionBox {
     width: 80%;
-    height: 100%;
-    padding: 1%;
+    height: 95%;
+    padding: 2%;
     background-color: rgba(217, 217, 217, 0.4);    
-    box-shadow: -12px 16px 20px 0.5px rgba(0, 0, 0, 0.5);
+    box-shadow: -12px 16px 20px 0.5px rgba(0, 0, 0, 0.4);
     border-radius: 20px 20px 20px 20px;
     display: flex;
     justify-content: center;
 }
 
 .transactionBox h1  {
-    font-size: 1.8em;
+    font-size: 2em;
 }
 
 .labelBox {
     width: 100%;
-    height: 50%;
-    background-color: black;
+    height: 60%;
     justify-content: space-between;
+}
+
+.labelBox a {
+    font-size: 1.2em;
 }
 
 .formContainer {
     position: relative;
-    top: 20%;
+    top: 30%;
     width: auto;
-    left: -15%;
+    left: -20%;
+    height: 90%;
 }
 
 
 .firstInput {
     position: relative;
-    width: 80%;
-    height: 25%;
+    width: 100%;
+    height: 35%;
     border-radius: 9px 9px 9px 9px;
-    border: none;
+    border: black solid 0px;
     background-color: #D9D9D9;
-
+    margin: 1%;
+    outline: none;
+    padding-left: 20px;
 }
 
+.firstInput::selection {
+    border: #6A66A3 solid 2px;
+}
+
+
 .blapinInput {
-    width: 32%;
-    height: 25%;
+    width: 35%;
+    height: 35%;
     padding-top: 1%;
     border-radius: 9px 9px 9px 9px;
     border: none;
     background-color: #D9D9D9;
-    
+    margin: 1%;
+    outline: none;
+    padding-left: 20px;
 }
 
 .formContainer button {
+    position: relative;
     background-color: #6A66A3;
+    border: #6A66A3 solid 2px;
     color: white;
     border: none;
     border-radius: 9px 9px 9px 9px;
-    width: 20%;
-    height: 25%;
+    width: 21%;
+    height: 35%;
+    top: -1%;
+    left: 2%;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
+.formContainer button:hover {
+    border: #6A66A3 solid 2px;
+    background-color: white;
+    color: #6A66A3;
+}
+
+
+
+
+
 .container2 {
+    background-color: green;
     width: 100%;
-    height: 55%;
+    height: 50%;
     display: flex;
     justify-content: center;
 }
 
-.box3 {
+.box2 {
     position: relative;
     top: 15%;
     background-color: white;
+    color: black;
     width: 90%;
     height: 80%;
     padding: 1%;
+}
+
+.border {
+    position: relative;
+    width: 100%;
+    height: 90%;
+}
+
+.border table {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border: black solid 2px;
+    border-radius: 9px 9px 9px 9px;
+}
+
+.border thead {
+    position: fixed;
+    background-color: black;
+    width: 87.4%;
+    height: 5%
+
 }
 
 

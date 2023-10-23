@@ -45,7 +45,7 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
-
+    <div id="virtueName"> <button onclick="window.location.href= '/virtue-banking/Pages/Startpage.php';"> <h1>virtue</h1></button></div>
     <div class="container">
         <section class="regiPage">
             <h1>Welcome back!</h1>

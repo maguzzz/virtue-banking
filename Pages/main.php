@@ -26,7 +26,7 @@ if (!empty($_SESSION["id"])) {
 </head>
 
 <body>
-
+    <div id="virtueName"> <button onclick="window.location.href= '/virtue-banking/Pages/Startpage.php';"> <h1>virtue</h1></button></div>
     <a href="Logout.php">Logout</a>
 
     <div class="infoContainer">

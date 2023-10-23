@@ -204,86 +204,48 @@
 
 
 
+table, th, td {
+    border-collapse: collapse;
 
+    padding: 1rem;
+}
 
-.container2 {
+main.table {
     width: 100%;
-    height: 50%;
-    display: flex;
-    justify-content: center;
+    height: 30vh;
+    
 }
 
-.box2 {
-    position: relative;
-    top: 15%;
-    background-color: white;
-    color: black;
-    width: 90%;
-    height: 80%;
-    padding: 1%;
-}
-
-.border {
-    position: relative;
+.table__header {
     width: 100%;
-    height: 90%;
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-.border::-webkit-scrollbar {
-    display: none;
-}
-.border table {
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    border-radius: 9px 9px 9px 9px;
+    height: 10%;
+    padding: .5rem;
 }
 
 
-.headbord {
-    position: fixed;
-    width: 87.4%;
-    height: 4%;
-    color: transparent;
-}
-
-.border thead {
+thead td {
     position: sticky;
-    width: 87.5%;
-    height: 5%;
-    z-index: 100;
     background-color: white;
-    border-top: black solid 1px;
+    top: 0;
+    left: 0;
 }
 
-.border th {
-    font-size: 1.2em;
-    text-align: center;
-}
-
-.border td {
-    color: #6F6F71; 
-    text-align: center;
-    padding-top: 1em;
-}
-
-.border tbody {
-    height: 2em;
-}
-
-.head {
-    position: fixed;
-    width: 87.5%;
-    height: 3%;
-    background-color: white;
+td {
+    padding-left: 9em;
+    padding-right: 9em;
 }
 
 
+.table__body{
+    width: 95%;
+    max-height: calc(89% - .8rem);
 
 
+    margin: .8rem auto;
+    border-radius: .6rem;
+
+    overflow: auto;
+}
 
 
 

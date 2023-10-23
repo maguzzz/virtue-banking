@@ -65,6 +65,7 @@ if (isset($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
+    <link rel="stylesheet" href="../Styles/All.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../Styles/RegiAndLogin.css?v=<?php echo time(); ?>">
 </head>
 

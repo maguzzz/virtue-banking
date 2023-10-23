@@ -44,7 +44,6 @@
 
 
 .container1 {
-    background-color: red;
     width: 100%;
     height: 50%;
     display: flex;
@@ -158,7 +157,6 @@
 
 
 .container2 {
-    background-color: green;
     width: 100%;
     height: 50%;
     display: flex;

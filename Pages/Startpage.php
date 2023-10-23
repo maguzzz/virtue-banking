@@ -10,7 +10,9 @@
 </head>
 
 <body>
-<div id="virtueName"> <button onclick="window.location.href= '/virtue-banking/Pages/Startpage.php';"> <h1>virtue</h1></button></div>
+    <div id="virtueName"> <button onclick="window.location.href= '/virtue-banking/Pages/Startpage.php';"> <h1>virtue</h1></button></div>
+    <img class="mainImg" src="../Images/MainImg.png" alt="Blobs and Ipad displaying Website">
+    <img class="blob1" src="../Images/Blob1.png" alt="Blob">
     <div id="infoCont">
         <div class="text">
             <h1>Virtual</h1>

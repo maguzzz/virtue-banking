@@ -62,6 +62,11 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
+    
+    <div class="loadingScreen">
+    </div>
+
+
     <div class="container">
         <section class="regiPage">
             <h1>Welcome!</h1>
@@ -80,6 +85,11 @@ if (isset($_POST["submit"])) {
             </form>
         </section>
     </div>
+
+
+
+
+    <script src="../Javascripts/Loadingscreen.js"></script>
 </body>
 
 </html>

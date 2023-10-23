@@ -25,7 +25,8 @@ if (!empty($_SESSION["id"])) {
 </head>
 
 <body>
-
+<div class="loadingScreen">
+    </div>
 
     <div class="wrapper">
         <div class="container1">
@@ -287,6 +288,7 @@ if (!empty($_SESSION["id"])) {
         </table>
     </div>
 -->
+<script src="../Javascripts/Loadingscreen.js"></script>
 
 </body>
 

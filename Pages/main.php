@@ -48,7 +48,7 @@ if (!empty($_SESSION["id"])) {
         <table class="tableContainer">
             <div class="headColorer">
                 <tr>
-                    <th>Name</th>
+                    <th>Nam</th>
                     <th>Arrival</th>
                     <th>Date</th>
                     <th>Status</th>

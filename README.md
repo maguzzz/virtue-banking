@@ -1,8 +1,10 @@
 # Preview
 
-![Maing](https://github.com/maguzzz/virtue-banking/assets/65002100/39a3475d-be09-4938-a48c-459541f452d4)
-![Login](https://github.com/maguzzz/virtue-banking/assets/65002100/e34a0bf8-fc21-402e-a413-740fb6139ff8)
-![Register](https://github.com/maguzzz/virtue-banking/assets/65002100/6d9aed17-4b0a-4051-9667-069b92ae373d)
+![1](https://github.com/maguzzz/virtue-banking/assets/65002100/1ba0e303-3e92-4b2f-b075-682186f4b940)
+![3](https://github.com/maguzzz/virtue-banking/assets/65002100/0f75abd7-3323-42d1-9c0f-5b75cdf73fed)
+![2](https://github.com/maguzzz/virtue-banking/assets/65002100/2ff8ed9e-59a7-4be7-a949-0aa56b0447e0)
+
 
 ### Work in Progress
-![Transfer](https://github.com/maguzzz/virtue-banking/assets/65002100/f6bd4252-5392-4598-ae8d-8a39f170078d)
+
+![4](https://github.com/maguzzz/virtue-banking/assets/65002100/395ecfb9-e5e6-4d48-8195-8fc544b0d6a5)

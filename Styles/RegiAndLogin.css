@@ -1,6 +1,11 @@
+body{
+    width: 100vw;
+    overflow: hidden;
+}
+
 .container {
     margin-top: 10%;
-    width: 100%;
+    width: 100vw;
     text-align: center;
 }
 
@@ -62,6 +67,23 @@ input::placeholder {
     color: #6F6F71;
 }
 
+.Blob1{
+    position: absolute;
+    right: -20%;
+    top: 12%;
+    height: 40vw;
+}
+
+.Blob2{
+    position: absolute;
+    left: -13%;
+    top: 23%;
+    height: 35vw;
+}
+
+.Blob3{
+    display: none;
+}
 
 @media screen and (max-width: 600px) {
     .regiPage h1 {
@@ -106,5 +128,26 @@ input::placeholder {
         top: -1%;
         font-size: 1.3em;
         color: #575757 !important;
+    }
+
+
+    .Blob1{
+        position: absolute;
+        right: -140%;
+        top: 10%;
+        rotate: -20deg;
+        height: 160vw;
+    }
+    
+    .Blob2{
+        display: none;
+    }
+
+    .Blob3{
+        display:unset;
+        position: absolute;
+        left: -60%;
+        top: 50vw;
+        height: 50vh;
     }
 }

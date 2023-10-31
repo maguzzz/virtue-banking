@@ -75,7 +75,12 @@ if (isset($_POST["submit"])) {
         <section class="regiPage">
             <h1>Welcome!</h1>
             <h2>Good to see you!</h2>
+            
 
+            <img class="Blob1" src="../Images/Blob1.png">
+            <img class="Blob2" src="../Images/Blob2.png">
+            <img class="Blob3" src="../Images/Blob3.png">
+            
             <form class="formContainer" action="" method="post" autocomplete="off">
                 <br> <br>
                 <input class="inputBoxes" type="text" name="user_name" id="name" required value="" placeholder="Name"> <br>                

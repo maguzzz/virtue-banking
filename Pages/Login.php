@@ -51,6 +51,10 @@ if (isset($_POST["submit"])) {
             <h1>Welcome back!</h1>
             <h2>Good to see you!</h2>
 
+            <img class="Blob1" src="../Images/Blob1.png">
+            <img class="Blob2" src="../Images/Blob2.png">
+            <img class="Blob3" src="../Images/Blob3.png">
+
             <form class="formContainer" action="" method="post" autocomplete="off">
                 <br> <br>
                 <input class="inputBoxes" type="text" name="email" id="email" required value="" placeholder="Email"><br>

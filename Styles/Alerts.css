@@ -1,0 +1,43 @@
+.AlertWindow {
+    background-color: gainsboro;
+    margin: auto;
+    border: none;
+    position: absolute;
+    top: 2vw;
+    max-width: 30em;
+    width: 30vw;
+    height: 3em;
+    border-radius: 1em;
+    z-index: 30;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.AlertWindow a {
+    height: 100%;
+    width: 80%;
+    color: white;
+    font-size: 120%;
+    display: flex;
+    align-items: center;
+}
+
+.AlertWindow img{
+    height: 70%;
+    padding-right: 1em;
+    width: auto;
+}
+
+
+.AlertRed{
+    background-color: #FC6F6F;
+}
+
+.AlertOrange{
+    background-color: #FCD46F;
+}
+
+.AlertGreen{
+    background-color: #8EE071;
+}

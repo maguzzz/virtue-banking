@@ -1,6 +1,9 @@
 <?php
 require 'config.php';
+require 'Alert.php';
 
+
+AlertMsg('','', false);
 
 //Fcuntion to generate Random Card number (no duplicates)
 function cardNumGen($x)
@@ -40,15 +43,19 @@ if (isset($_POST["submit"])) {
 
     $duplicate = mysqli_query($connect, "SELECT * FROM user WHERE email = '$email'");
     if (mysqli_num_rows($duplicate) > 0) {
-        //ERROR Accoutn registerd
+        //ERROR Account Already Registered
+
+        AlertMsg("Account Already Registered","Red", true);
     } else {
         if ($password == $confirmpassword) {
-            //Creating Account
+            //ERROR Account Created
+            AlertMsg("Account Created","Green", true);
             mysqli_query($connect, "INSERT INTO user VALUES('','$user_name','$email','$password','$pin','$cardNumber','$balance')"); 
             header("Location: login.php");
             exit();
         } else {
-            //ERROR password not identical
+            //ERROR Password Not Identical
+            AlertMsg("Password Not Identical","Red", true);
         }
     }
 

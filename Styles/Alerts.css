@@ -12,6 +12,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: hide 0s 5s forwards;
+}
+
+
+@keyframes hide {
+    to {
+        visibility: hidden;
+    }
 }
 
 .AlertWindow a {
@@ -23,21 +31,21 @@
     align-items: center;
 }
 
-.AlertWindow img{
+.AlertWindow img {
     height: 70%;
     padding-right: 1em;
     width: auto;
 }
 
 
-.AlertRed{
+.AlertRed {
     background-color: #FC6F6F;
 }
 
-.AlertOrange{
+.AlertOrange {
     background-color: #FCD46F;
 }
 
-.AlertGreen{
+.AlertGreen {
     background-color: #8EE071;
 }

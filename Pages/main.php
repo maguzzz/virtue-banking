@@ -1,5 +1,8 @@
 <?php
 require 'config.php';
+require 'Alert.php';
+
+AlertMsg('','', false);
 
 if (!empty($_SESSION["id"])) {
     $id = $_SESSION["id"];
@@ -102,9 +105,11 @@ if (!empty($_SESSION["id"])) {
                         }else{
 
                             //ERROR for not sending money to your self
+                            AlertMsg("Cant Use Own Cardnumber","Orange", true);
                         }
                         } else {
                             //ERROR cardnumber not found (no user found)
+                            AlertMsg("Cardnumber Not Found","Orange", true);
                         }
                     }
 

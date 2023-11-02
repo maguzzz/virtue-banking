@@ -1,5 +1,8 @@
 <?php
 require 'config.php';
+require 'Alert.php';
+
+AlertMsg('','', false);
 
 if(!empty($_SESSION["id"])){
     header("Location: Main.php");
@@ -23,10 +26,12 @@ if (isset($_POST["submit"])) {
 
         } else {
             //ERROR wrong password
+            AlertMsg("Wrong Password","Red", true);
         }
 
     } else {
        //ERROR email not registered
+       AlertMsg("Email Not Registered","Red", true);
     }
 
 }

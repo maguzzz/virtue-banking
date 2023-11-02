@@ -2,7 +2,6 @@
 require 'config.php';
 require 'Alert.php';
 
-
 AlertMsg('','', false);
 
 //Fcuntion to generate Random Card number (no duplicates)
@@ -45,7 +44,7 @@ if (isset($_POST["submit"])) {
     if (mysqli_num_rows($duplicate) > 0) {
         //ERROR Account Already Registered
 
-        AlertMsg("Account Already Registered","Red", true);
+        AlertMsg("Email Already Registered","Red", true);
     } else {
         if ($password == $confirmpassword) {
             //ERROR Account Created

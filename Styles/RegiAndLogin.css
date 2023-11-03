@@ -3,6 +3,56 @@ body{
     overflow: hidden;
 }
 
+.loadingScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    z-index: 10000000;
+    transition: opacity 0.75s, visibility 0.75s;
+}
+
+.loadingScreen::after {
+    content: "";
+    width: 4em;
+    height: 4em;
+    border: #6A66A3 solid 2px;
+    animation: loading 5s ease infinite;
+}
+
+.loadingScreen--hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes loading {
+    
+    0% {
+        transform: rotate(45deg);
+    }
+
+    25% {
+        transform: rotate(90deg);
+    }
+
+    50% {
+        transform: rotate(135deg);
+    }
+
+    75% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(225deg);
+    }
+}
+
 .container {
     margin-top: 10%;
     width: 100vw;

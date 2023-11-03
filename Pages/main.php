@@ -26,50 +26,97 @@ if (!empty($_SESSION["id"])) {
 </head>
 
 <body>
-    <div id="virtueName"> <button onclick="window.location.href= '/virtue-banking/Pages/Startpage.php';"> <h1>virtue</h1></button></div>
-    <a href="Logout.php">Logout</a>
 
-    <div class="infoContainer">
-        <a class="accountName">
-            <?php echo $row["user_name"] . "<br> <a class='moneyInfo'>" . $row['balance'] . "€</a>" ?>
-        </a>
+    <div class="loadingScreen">
     </div>
+
+    <div class="wrapper">
+        <div class="container1">
+            <a class="logoutButton" href="Logout.php">Log out</a>
+            <div class="box1">
+                <div class="col1">
+                    <h1>
+                        <?php echo $row["user_name"] . "<br> <a class='moneyInfo'>" . $row['balance'] . "€</a>" ?>
+                    </h1>
+                </div>
+
+    <div id="virtueName"> <button onclick="window.location.href= '/virtue-banking/Pages/Startpage.php';"> <h1>virtue</h1></button></div>
+
+
+                <div class="col2">
+                    <div class="transactionBox">
+                        <h1>Transfer</h1>
+                        <form class="formContainer" action="" method="post" autocomplete="on">
+                            <div class="labelBox">
+                                <a>Your cardnumber:
+                                    <?php echo $row["cardNumber"] ?>
+                                </a>
+                                <input class="firstInput" type="number" name="cardNumber" required value=""
+                                    placeholder="Cardnumber"><br>
+                                <input class="blapinInput" type="number" min="1" name="balance" required value=""
+                                    placeholder="Balance">
+                                <button type="submit" name="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
 
     <form class="formContainer" action="" method="post" autocomplete="on">
         <input type="number" name="cardNumber" required value="" placeholder="cardNumber"><br>
         <input type="number" min="1" name="balance" required value="" placeholder="balance"> <br>
 
-        <button type="submit" name="submit">Submit</button>
-    </form>
 
 
 
-    <div class="container">
-        <table class="tableContainer">
-            <div class="headColorer">
-                <tr>
-                    <th>Name</th>
-                    <th>Arrival</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Value</th>
-                </tr>
-            </div>
-            <tr>
-                <?php
+        </div>
 
 
+        <main class="table">
+            <section class="table__header">
+                <h1>Transactions</h1>
+            </section>
+            <section class="table__body">
+                <table>
+                    <thead>
+                        <tr>
+                            <td> Name </td>
+                            <td> Arrival </td>
+                            <td> Date </td>
+                            <td> Status </td>
+                            <td> Value</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <?php
+
+
+
+                            $idTransaction = $_SESSION["id"];
+                            $currentDateTime = date('Y-m-d');
+
+                            if (isset($_POST["submit"])) {
+                                $cardNumber = $_POST["cardNumber"];
+                                $value = $_POST["balance"];
+
+                                //preventing SQL injection
+                                $cardNumber = mysqli_real_escape_string($connect, $cardNumber);
+                                $value = mysqli_real_escape_string($connect, $value);
+
+                                // Getting the receivers card number
+                                $result = mysqli_query($connect, "SELECT * FROM user WHERE cardNumber = '$cardNumber'");
 
                 $idTransaction = $_SESSION["id"];
                 $currentDateTime = date('Y-m-d');
 
-                if (isset($_POST["submit"])) {
-                    $cardNumber = $_POST["cardNumber"];
-                    $value = $_POST["balance"];
 
-                    //preventing SQL injection
-                    $cardNumber = mysqli_real_escape_string($connect, $cardNumber);
-                    $value = mysqli_real_escape_string($connect, $value);
+                                        $logedAccount = mysqli_query($connect, "SELECT * FROM user WHERE id = '$id'");
+                                        $logedRow = mysqli_fetch_assoc($logedAccount);
+
+                                        if ($row["cardNumber"] != $logedRow["cardNumber"]) {
+
 
                     // Getting the receivers card number
                     $result = mysqli_query($connect, "SELECT * FROM user WHERE cardNumber = '$cardNumber'");
@@ -80,8 +127,9 @@ if (!empty($_SESSION["id"])) {
                             $receiveId = $row["id"];
                             $status = "complete";
 
-                            $logedAccount = mysqli_query($connect, "SELECT * FROM user WHERE id = '$id'");
-                            $logedRow = mysqli_fetch_assoc($logedAccount);
+                                            mysqli_query($connect, "UPDATE user SET balance = $accSenderBalance WHERE id = $id ");
+                                            mysqli_query($connect, "UPDATE user SET balance = $accReceiverBalance WHERE id = $receiveId");
+
 
                             if($row["cardNumber"] != $logedRow["cardNumber"]){
 
@@ -93,8 +141,13 @@ if (!empty($_SESSION["id"])) {
                             mysqli_query($connect, "UPDATE user SET balance = $accReceiverBalance WHERE id = $receiveId");
 
 
-                            //Insert the transaction into the database
-                            $query = "INSERT INTO transactions (sender, receiver, datum, tra_value, tra_status) VALUES ($idTransaction, $receiveId, '$currentDateTime', $value, '$status')";
+                                            //Insert the transaction into the database
+                                            $query = "INSERT INTO transactions (sender, receiver, datum, tra_value, tra_status) VALUES ($idTransaction, $receiveId, '$currentDateTime', $value, '$status')";
+
+                                            if (mysqli_query($connect, $query)) {
+                                                echo "<h1>" . $row["user_name"] . "</h1>";
+                                            }
+                                        } else {
 
                             if (mysqli_query($connect, $query)) {
                                 echo "<h1>" . $row["user_name"] . "</h1>";
@@ -157,6 +210,8 @@ if (!empty($_SESSION["id"])) {
             </tr>
         </table>
     </div>
+
+    <script src="../Javascripts/Loadingscreen.js"></script>
 
 
     <script src="../Javascripts/Main.js"></script>

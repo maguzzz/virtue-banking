@@ -2,8 +2,6 @@
 require 'config.php';
 require 'Alert.php';
 
-AlertMsg('','', false);
-
 if (!empty($_SESSION["id"])) {
     $id = $_SESSION["id"];
     $result = mysqli_query($connect, "SELECT * FROM user WHERE id = '$id'");
@@ -24,8 +22,7 @@ if (!empty($_SESSION["id"])) {
     <title>Main</title>
     <link rel="stylesheet" href="../Styles/All.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../Styles/Main.css?v=<?php echo time(); ?>">
-
-
+    <?php AlertMsg('','', false); ?>
 </head>
 
 <body>

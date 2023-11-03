@@ -2,8 +2,6 @@
 require 'config.php';
 require 'Alert.php';
 
-AlertMsg('','', false);
-
 //Fcuntion to generate Random Card number (no duplicates)
 function cardNumGen($x)
 {
@@ -73,6 +71,7 @@ if (isset($_POST["submit"])) {
     <title>Registration</title>
     <link rel="stylesheet" href="../Styles/All.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../Styles/RegiAndLogin.css?v=<?php echo time(); ?>">
+    <?php AlertMsg('','', false); ?>
 </head>
 
 <body>

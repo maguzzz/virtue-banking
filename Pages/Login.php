@@ -47,6 +47,7 @@ if (isset($_POST["submit"])) {
     <title>Login</title>
     <link rel="stylesheet" href="../Styles/All.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../Styles/RegiAndLogin.css?v=<?php echo time(); ?>">
+    <?php AlertMsg('','', false); ?>
 </head>
 
 <body>

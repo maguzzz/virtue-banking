@@ -86,13 +86,17 @@ if (!empty($_SESSION["id"])) {
                             $idTransaction = $_SESSION["id"];
                             $currentDateTime = date('Y-m-d');
                             if (isset($_POST["submit"])) {
+
                                 $cardNumber = $_POST["cardNumber"];
                                 $value = $_POST["balance"];
+
                                 //preventing SQL injection
                                 $cardNumber = mysqli_real_escape_string($connect, $cardNumber);
                                 $value = mysqli_real_escape_string($connect, $value);
+
                                 // Getting the receivers card number
                                 $result = mysqli_query($connect, "SELECT * FROM user WHERE cardNumber = '$cardNumber'");
+
                                 if ($result) {
                                     $row = mysqli_fetch_assoc($result);
                                     if ($row) {
@@ -104,13 +108,20 @@ if (!empty($_SESSION["id"])) {
 
                                             $accSenderBalance = $logedRow["balance"] - $value;
                                             $accReceiverBalance = $row["balance"] + $value;
+
                                             mysqli_query($connect, "UPDATE user SET balance = $accSenderBalance WHERE id = $id ");
                                             mysqli_query($connect, "UPDATE user SET balance = $accReceiverBalance WHERE id = $receiveId");
+
                                             //Insert the transaction into the database
                                             $query = "INSERT INTO transactions (sender, receiver, datum, tra_value, tra_status) VALUES ($idTransaction, $receiveId, '$currentDateTime', $value, '$status')";
+                                            
+                                            //Transaction Alert 
+                                            AlertMsg("Successful Transaction", "Green", true);
+
                                             if (mysqli_query($connect, $query)) {
                                                 echo "<h1>" . $row["user_name"] . "</h1>";
                                             }
+                                            
                                         } else {
                                             //ERROR for not sending money to your self
                                             AlertMsg("Cant Use Own Cardnumber", "Orange", true);
@@ -124,11 +135,14 @@ if (!empty($_SESSION["id"])) {
                                 exit();
                             }
                             $searchResult = mysqli_query($connect, "SELECT * FROM transactions WHERE sender = '$idTransaction' OR receiver = '$idTransaction'");
+
                             if (mysqli_num_rows($searchResult) > 0) {
                                 while ($row = mysqli_fetch_assoc($searchResult)) {
+
                                     $otherPerson = mysqli_query($connect, "SELECT user_name FROM user WHERE id != '$id' AND id = $row[receiver]  AND id != '$id' OR id = $row[sender] AND id != '$id'");
                                     $otherPersonName = mysqli_fetch_assoc($otherPerson);
                                     echo "<td id='userName'>" . $otherPersonName["user_name"] . "</td>";
+
                                     if ($id != $row["receiver"]) {
                                         echo "<td> sent </td>";
                                     } else {

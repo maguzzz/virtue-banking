@@ -1,0 +1,38 @@
+@font-face {
+    font-family: Kollektif-Bold;
+    src: url(../font/Kollektif-Bold.ttf);
+}
+
+@font-face {
+    font-family: Kollektif-BoldItalic;
+    src: url(../font/Kollektif-BoldItalic.ttf);
+}
+
+@font-face {
+    font-family: Kollektif-Italic;
+    src: url(../font/Kollektif-Italic.ttf);
+}
+
+@font-face {
+    font-family: Kollektif;
+    src: url(../font/Kollektif.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Kollektif;
+}
+
+#virtueName{
+    position: fixed;
+    top: 1vw;
+    left: 1vw;
+}
+
+#virtueName button{
+    background-color: transparent;
+    border: none;
+    font-size: .7em;
+    color: #575757;
+}

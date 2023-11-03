@@ -1,5 +1,6 @@
 <?php
 require 'config.php';
+require 'Alert.php';
 
 if (!empty($_SESSION["id"])) {
     $id = $_SESSION["id"];
@@ -19,12 +20,13 @@ if (!empty($_SESSION["id"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
+    <link rel="stylesheet" href="../Styles/All.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../Styles/Main.css?v=<?php echo time(); ?>">
-
-
+    <?php AlertMsg('','', false); ?>
 </head>
 
 <body>
+
     <div class="loadingScreen">
     </div>
 
@@ -37,6 +39,9 @@ if (!empty($_SESSION["id"])) {
                         <?php echo $row["user_name"] . "<br> <a class='moneyInfo'>" . $row['balance'] . "€</a>" ?>
                     </h1>
                 </div>
+
+    <div id="virtueName"> <button onclick="window.location.href= '/virtue-banking/Pages/Startpage.php';"> <h1>virtue</h1></button></div>
+
 
                 <div class="col2">
                     <div class="transactionBox">
@@ -58,9 +63,15 @@ if (!empty($_SESSION["id"])) {
             </div>
 
 
+    <form class="formContainer" action="" method="post" autocomplete="on">
+        <input type="number" name="cardNumber" required value="" placeholder="cardNumber"><br>
+        <input type="number" min="1" name="balance" required value="" placeholder="balance"> <br>
+
+
 
 
         </div>
+
 
         <main class="table">
             <section class="table__header">
@@ -97,11 +108,9 @@ if (!empty($_SESSION["id"])) {
                                 // Getting the receivers card number
                                 $result = mysqli_query($connect, "SELECT * FROM user WHERE cardNumber = '$cardNumber'");
 
-                                if ($result) {
-                                    $row = mysqli_fetch_assoc($result);
-                                    if ($row) {
-                                        $receiveId = $row["id"];
-                                        $status = "complete";
+                $idTransaction = $_SESSION["id"];
+                $currentDateTime = date('Y-m-d');
+
 
                                         $logedAccount = mysqli_query($connect, "SELECT * FROM user WHERE id = '$id'");
                                         $logedRow = mysqli_fetch_assoc($logedAccount);
@@ -109,11 +118,27 @@ if (!empty($_SESSION["id"])) {
                                         if ($row["cardNumber"] != $logedRow["cardNumber"]) {
 
 
-                                            $accSenderBalance = $logedRow["balance"] - $value;
-                                            $accReceiverBalance = $row["balance"] + $value;
+                    // Getting the receivers card number
+                    $result = mysqli_query($connect, "SELECT * FROM user WHERE cardNumber = '$cardNumber'");
+
+                    if ($result) {
+                        $row = mysqli_fetch_assoc($result);
+                        if ($row) {
+                            $receiveId = $row["id"];
+                            $status = "complete";
 
                                             mysqli_query($connect, "UPDATE user SET balance = $accSenderBalance WHERE id = $id ");
                                             mysqli_query($connect, "UPDATE user SET balance = $accReceiverBalance WHERE id = $receiveId");
+
+
+                            if($row["cardNumber"] != $logedRow["cardNumber"]){
+
+                            
+                            $accSenderBalance = $logedRow["balance"] - $value;
+                            $accReceiverBalance = $row["balance"] + $value;
+
+                            mysqli_query($connect, "UPDATE user SET balance = $accSenderBalance WHERE id = $id ");
+                            mysqli_query($connect, "UPDATE user SET balance = $accReceiverBalance WHERE id = $receiveId");
 
 
                                             //Insert the transaction into the database
@@ -124,136 +149,72 @@ if (!empty($_SESSION["id"])) {
                                             }
                                         } else {
 
-                                            //ERROR for not sending money to your self
-                                        }
-                                    } else {
-                                        //ERROR cardnumber not found (no user found)
-                                    }
-                                }
-
-                                header("Location: main.php");
-                                exit();
+                            if (mysqli_query($connect, $query)) {
+                                echo "<h1>" . $row["user_name"] . "</h1>";
                             }
+                        }else{
 
-                            $searchResult = mysqli_query($connect, "SELECT * FROM transactions WHERE sender = '$idTransaction' OR receiver = '$idTransaction'");
+                            //ERROR for not sending money to your self
+                            AlertMsg("Cant Use Own Cardnumber","Orange", true);
+                        }
+                        } else {
+                            //ERROR cardnumber not found (no user found)
+                            AlertMsg("Cardnumber Not Found","Orange", true);
+                        }
+                    }
 
-                            if (mysqli_num_rows($searchResult) > 0) {
+                    header("Location: main.php");
+                    exit();
+                }
 
-                                while ($row = mysqli_fetch_assoc($searchResult)) {
+                $searchResult = mysqli_query($connect, "SELECT * FROM transactions WHERE sender = '$idTransaction' OR receiver = '$idTransaction'");
 
-                                    $otherPerson = mysqli_query($connect, "SELECT user_name FROM user WHERE id != '$id' AND id = $row[receiver]  AND id != '$id' OR id = $row[sender] AND id != '$id'");
-                                    $otherPersonName = mysqli_fetch_assoc($otherPerson);
+                if (mysqli_num_rows($searchResult) > 0) {
 
-                                    echo "<td id='userName'>" . $otherPersonName["user_name"] . "</td>";
+                    while ($row = mysqli_fetch_assoc($searchResult)) {
 
-                                    if ($id != $row["receiver"]) {
-                                        echo "<td> sent </td>";
-                                    } else {
-                                        echo "<td> received </td>";
-                                    }
-                                    ;
+                        $otherPerson = mysqli_query($connect, "SELECT user_name FROM user WHERE id != '$id' AND id = $row[receiver]  AND id != '$id' OR id = $row[sender] AND id != '$id'");
+                        $otherPersonName = mysqli_fetch_assoc($otherPerson);
 
-                                    echo "<td>" . $row["datum"] . "</td>";
-                                    if ($row["tra_value"] < 25) {
-                                        echo "<td> Complete </td>";
-                                    } else {
-                                        echo "<td> Pending </td>";
-                                    }
-                                    ;
-                                    if ($id != $row["receiver"]) {
-                                        echo "<td> -" . $row["tra_value"] . "€</td>";
-                                    } else {
-                                        echo "<td> +" . $row["tra_value"] . "€</td>";
-                                    }
-                                    ;
+                        echo "<td id='userName'>" . $otherPersonName["user_name"] . "</td>";
 
-                                    echo "</tr>";
-                                }
+                        if ($id != $row["receiver"]) {
+                            echo "<td> sent </td>";
+                        } else {
+                            echo "<td> received </td>";
+                        }
+                        ;
 
-                            } else {
-                                echo "<div class='noFoundMessageContainer'><a class='noFoundMessage'>No transactions found.</a></div>";
-                            }
+                        echo "<td>" . $row["datum"] . "</td>";
+                        if ($row["tra_value"] < 25) {
+                            echo "<td> Complete </td>";
+                        } else {
+                            echo "<td> Pending </td>";
+                        }
+                        ;
+                        if ($id != $row["receiver"]) {
+                            echo "<td> -" . $row["tra_value"] . "€</td>";
+                        } else {
+                            echo "<td> +" . $row["tra_value"] . "€</td>";
+                        }
+                        ;
 
-                            ?>
-                        </tr>
-                        <tr>
-                            <td> Name </td>
-                            <td> Arrival </td>
-                            <td> Date </td>
-                            <td> Status </td>
-                            <td> Value</td>
-                        </tr>
-                        <tr>
-                            <td> Name </td>
-                            <td> Arrival </td>
-                            <td> Date </td>
-                            <td> Status </td>
-                            <td> Value</td>
-                        </tr>
-                        <tr>
-                            <td> Name </td>
-                            <td> Arrival </td>
-                            <td> Date </td>
-                            <td> Status </td>
-                            <td> Value</td>
-                        </tr>
-                        <tr>
-                            <td> Name </td>
-                            <td> Arrival </td>
-                            <td> Date </td>
-                            <td> Status </td>
-                            <td> Value</td>
-                        </tr>
-                        <tr>
-                            <td> Name </td>
-                            <td> Arrival </td>
-                            <td> Date </td>
-                            <td> Status </td>
-                            <td> Value</td>
-                        </tr>
-                        <tr>
-                            <td> Name </td>
-                            <td> Arrival </td>
-                            <td> Date </td>
-                            <td> Status </td>
-                            <td> Value</td>
-                        </tr>
-                        <tr>
-                            <td> Name </td>
-                            <td> Arrival </td>
-                            <td> Date </td>
-                            <td> Status </td>
-                            <td> Value</td>
-                        </tr>
-                        <tr>
-                            <td> Name </td>
-                            <td> Arrival </td>
-                            <td> Date </td>
-                            <td> Status </td>
-                            <td> Value</td>
-                        </tr>
-                        <tr>
-                            <td> Name </td>
-                            <td> Arrival </td>
-                            <td> Date </td>
-                            <td> Status </td>
-                            <td> Value</td>
-                        </tr>
-                        <tr>
-                            <td> Name </td>
-                            <td> Arrival </td>
-                            <td> Date </td>
-                            <td> Status </td>
-                            <td> Value</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-        </main>
+                        echo "</tr>";
+                    }
+
+                } else {
+                    echo "<a class='noFoundMessage'>No transactions found.</a>";
+                }
+
+                ?>
+            </tr>
+        </table>
     </div>
 
     <script src="../Javascripts/Loadingscreen.js"></script>
 
+
+    <script src="../Javascripts/Main.js"></script>
 </body>
 
 </html>

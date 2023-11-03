@@ -94,7 +94,7 @@
 
 
 .col1, .col2 {
-    width: 50%;
+    width: 40%;
     height: 90%;
 }
 
@@ -116,8 +116,7 @@
     height: 80%;
     padding: 1%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
 }
 
 .box1 h1 {
@@ -184,7 +183,7 @@
 
 
 .blapinInput {
-    width: 35%;
+    width: 65%;
     height: 35%;
     padding-top: 1%;
     border-radius: 9px 9px 9px 9px;
@@ -202,7 +201,7 @@
     color: white;
     border: none;
     border-radius: 9px 9px 9px 9px;
-    width: 21%;
+    width: 30%;
     height: 35%;
     top: -1%;
     left: 2%;
@@ -274,10 +273,6 @@ td {
 }
 
 
-.table__body::-webkit-scrollbar {
-    display: none;
-}
-
 .noFoundMessage {
     width: auto;
     height: auto;
@@ -321,12 +316,135 @@ td {
         width: 10%;
     } */
 
+    .box1 {
+        top: 5%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .transactionBox {
+        height: 14em;
+        width: 80%;
+    }
+
+    td {
+        padding-left: 2.8em;
+        padding-right: 2.8em;
+        text-align: center;
+    }
+
+    .col1 {
+        width: 90%;
+        font-size: smaller;
+        text-align: center;
+    }
+
+    .col1 h1 {
+        border-bottom: black solid 3px;
+        padding-bottom: 0.5em;
+    }
+    
+    .col2 {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .logoutButton {
+        width: 100%;
+        left: 87%;
+    }
+
+    body {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .table__body {
+        background-color: rgba(217, 217, 217, 0.4);
+        box-shadow: -12px 16px 20px 0.5px rgba(0, 0, 0, 0.4);
+        border-radius: 20px 20px 20px 20px;
+    }
+
 }
 
+@media (max-width: 500px) {
 
+    .labelBox a {
+        font-size: 0.1em;
+    }
 
+    .box1 {
+        top: 4%;
+        flex-direction: column;
+        align-items: center;
+    }
 
+    .transactionBox {
+        margin-top: 9%;
+        height: 12em;
+        width: 100%;
+    }
 
+    .transactionBox h1 {
+        font-size: 1.5em;
+        padding-left: 8%;
+        padding-top: 2%;
+    }
+
+    .transactionBox a{
+        font-size: 1em;
+    }
+
+    td {
+        padding-left: 0.63em;
+        padding-right: 0.63em;
+    }
+
+    .col1 {
+        font-size: smaller;
+    }
+
+    .col1 h1 {
+        border-bottom: black solid 3px;
+        padding-bottom: 0.5em;
+    }
+    
+    .col2 {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .logoutButton {
+        width: 100%;
+        left: 79%;
+        top: 3%;
+        font-size: 1.2em;
+    }
+
+    body {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
+ 
+
+    .table__header h1 {
+        font-size: 2em;
+        padding-left: 5%;
+        padding-top: 5%;
+    }
+
+    .formContainer {
+        left: -20%;
+    }
+
+    .labelBox {
+        width: 14em;
+    }
+
+}
 
 
 
